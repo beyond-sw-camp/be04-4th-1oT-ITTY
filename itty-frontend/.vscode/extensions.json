@@ -1,3 +1,7 @@
 {
-  "recommendations": ["Vue.volar"]
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "budparr.language-hugo-vscode",
+    "tamasfe.even-better-toml"
+  ]
 }
