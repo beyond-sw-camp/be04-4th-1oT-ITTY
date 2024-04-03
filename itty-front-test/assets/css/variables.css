@@ -18,11 +18,19 @@
 /*--------------------------------------------------------------
 # 1. HeroBiz template variables 
 --------------------------------------------------------------*/
+
+@font-face {
+  font-family: 'SejonghospitalBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SejonghospitalBold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
 :root {
 
   /* Fonts */
-  --font-default: 'Open Sans', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-primary: 'Source Sans Pro', sans-serif;
+  --font-default: 'SejonghospitalBold', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-primary: 'SejonghospitalBold', sans-serif;
   --font-secondary: 'Poppins', sans-serif;
 
   /* Colors */
@@ -33,22 +41,22 @@
   --color-default-rgb: 26, 31, 36;
 
   /* Defult links color */
-  --color-links: #675695;
-  --color-links-hover: #9e7ff3;
+  --color-links: #303841;
+  --color-links-hover: #6d8198;
 
   /* Primay colors */
-  --color-primary: #9376E0;
-  --color-primary-light: #9e7ff3;
-  --color-primary-dark: #5b4c84;
+  --color-primary: #3f4c5c;
+  --color-primary-light: #657a94;
+  --color-primary-dark: #262c33;
 
   --color-primary-rgb: 14, 162, 189;
   --color-primary-light-rgb: 30, 195, 224;
   --color-primary-dark-rgb: 1, 137, 161;
 
   /* Secondary colors */
-  --color-secondary: #485664;
-  --color-secondary-light: #8f9fae;
-  --color-secondary-dark: #3a4753;
+  --color-secondary: #9faec0;
+  --color-secondary-light: #f8d487;
+  --color-secondary-dark: #b69b60;
 
   --color-secondary-rgb: 72, 86, 100;
   --color-secondary-light-rgb: 143, 159, 174;
