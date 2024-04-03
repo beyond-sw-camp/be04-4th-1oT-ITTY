@@ -272,7 +272,7 @@ section {
 
 @media (max-width: 1279px) {
 
-  .header .btn-getstarted,
+  /* .header .btn-getstarted, */
   .header .btn-getstarted:focus {
     margin-right: 50px;
   }
