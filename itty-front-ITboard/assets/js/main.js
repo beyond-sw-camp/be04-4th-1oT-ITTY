@@ -67,4 +67,4 @@
 					visibleClass: 'sidebar-visible'
 				});
 
-})(jQuery);
+})(jQuery); 

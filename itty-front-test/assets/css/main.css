@@ -166,6 +166,7 @@ section {
   }
 }
 
+
 /*--------------------------------------------------------------
 # Scroll top button
 --------------------------------------------------------------*/
@@ -1445,4 +1446,5 @@ section {
 .footer .footer-legal .social-links a:hover {
   background: var(--color-primary);
   text-decoration: none;
+}
 }
