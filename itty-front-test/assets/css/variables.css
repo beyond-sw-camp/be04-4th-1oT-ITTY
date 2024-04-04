@@ -31,7 +31,6 @@
   /* Fonts */
   --font-default: 'SejonghospitalBold', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-primary: 'SejonghospitalBold', sans-serif;
-  --font-secondary: 'Poppins', sans-serif;
 
   /* Colors */
   /* The *-rgb color names are simply the RGB converted value of the corresponding color for use in the rgba() function */
