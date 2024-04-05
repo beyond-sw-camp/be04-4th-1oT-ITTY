@@ -54,5 +54,5 @@
 </script>
 
 <style scoped>
-
+    @import './main-content/css/main.css';
 </style>
