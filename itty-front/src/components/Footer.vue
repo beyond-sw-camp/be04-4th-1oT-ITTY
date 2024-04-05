@@ -25,8 +25,8 @@
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-6 footer-newsletter">
-                    <h4>검색창으로 쓰면 될라나</h4>
-                    <p>이거 검색창 맞나?</p>
+                    <h4>검색창</h4>
+                    <p>검색창으로 사용 예정입니다.</p>
                     <form action="" method="post">
                         <input type="email" name="email"><input type="submit" value="Subscribe">
                     </form>
