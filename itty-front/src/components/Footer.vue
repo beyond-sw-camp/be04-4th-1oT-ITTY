@@ -46,6 +46,6 @@
 
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+    @import './main-content/css/main.css';
 </style>
