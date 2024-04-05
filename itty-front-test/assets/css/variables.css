@@ -26,6 +26,8 @@
   font-style: normal;
 }
 
+
+
 :root {
 
   /* Fonts */
@@ -215,3 +217,4 @@
 .bg-white { background-color: var(--color-white) !important; }
 .bg-gray { background-color: var(--color-gray) !important; }
 .bg-black { background-color: var(--color-black) !important; }
+
