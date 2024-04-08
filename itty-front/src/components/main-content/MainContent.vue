@@ -124,6 +124,11 @@
 
 <script setup>
 
+    import {ref, onBeforeMount , onMounted} from 'vue';
+    import { useRouter } from 'vue-router';
+
+    const router = useRouter();
+
 /**
 * Template Name: HeroBiz
 * Template URL: https://bootstrapmade.com/herobiz-bootstrap-business-template/
@@ -141,8 +146,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const preloader = document.querySelector('#preloader');
     if (preloader) {
         window.addEventListener('load', () => {
-        preloader.remove();
-    });
+            preloader.remove();
+        });
     }
 
     /**

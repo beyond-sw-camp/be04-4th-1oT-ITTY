@@ -23,9 +23,9 @@
  
           <li class="dropdown"><a href="#"><span>게시판</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li class="dropdown"><a href="#"><span>트렌드 게시판</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+              <li class="dropdown"><a><span>트렌드 게시판</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul>
-                  <li><a href="#">IT정보(전체) 게시판</a></li>
+                  <li><a @click="navigateToTrendBoard">IT정보(전체) 게시판</a></li>
                   <li><a href="#">BACKEND</a></li>
                   <li><a href="#">FRONTEND</a></li>
                   <li><a href="#">DEVOPS</a></li>
@@ -50,7 +50,13 @@
 </template>
 
 <script setup>
+  import { useRouter } from 'vue-router';
 
+  const router = useRouter();
+
+  function navigateToTrendBoard() {
+    router.push('/trend-board');
+  }
 </script>
 
 <style scoped>
