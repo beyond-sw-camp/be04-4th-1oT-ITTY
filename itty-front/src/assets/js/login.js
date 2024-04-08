@@ -1,3 +1,9 @@
+
+
+import LoginContent from '@/components/login-content/LoginContent.vue';
+import { ref } from 'vue';
+
+
 // Elements
 const el = {
     signUpHome: document.getElementById('sign-up'),
@@ -43,7 +49,7 @@ const el = {
   // Show the page Home
   el.btnHome.addEventListener('click', showHome);
   
-  
+
   // Functions Events
   // function to show screen Home
   function showHome(event) {
@@ -127,4 +133,26 @@ const el = {
         this.labels[0].style.top = '25px';
       }
     })
+  }
+
+  export function useLogin() {
+    const isSignUpVisible = ref(false);
+    const isSignInVisible = ref(false);
+  
+    function showSignUp() {
+      isSignUpVisible.value = true;
+      isSignInVisible.value = false;
+    }
+  
+    function showSignIn() {
+      isSignInVisible.value = true;
+      isSignUpVisible.value = false;
+    }
+  
+    function showHome() {
+      isSignUpVisible.value = false;
+      isSignInVisible.value = false;
+    }
+  
+    return { isSignUpVisible, isSignInVisible, showSignUp, showSignIn, showHome };
   }
