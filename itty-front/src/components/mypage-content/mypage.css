@@ -1,0 +1,49 @@
+/* 기본 컨테이너 스타일 */
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 20px;
+    margin: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    width: 250px;
+    max-width: 100%;
+  }
+  
+  /* 각 항목에 대한 기본 스타일 */
+  .userInfo div {
+    padding: 10px 20px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  /* 활성 탭 스타일 */
+  .All, .Scrap, .History, .ModifyUser, .QnA, .Signout {
+    background-color: #f0f0f0;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  /* 호버 효과 */
+  .userInfo div:hover {
+    background-color: #f7f7f7;
+  }
+  
+  /* 구분선 스타일 */
+  hr {
+    border: none;
+    height: 1px;
+    background-color: #e0e0e0;
+    width: 100%;
+    margin: 8px 0;
+  }
+  
+  /* 개행(<br>) 스타일 조정 */
+  br {
+    display: none;
+  }
