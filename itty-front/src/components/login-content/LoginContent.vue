@@ -1,84 +1,463 @@
 <template>
+  <body>
+
+<main class="main">
   
-    <main class="main">
-  <section class="home">
+  <section class="home" v-if="!isSignUpVisible && !isSignInVisible">
     <h1>Welcome to the <span>ITTY</span></h1>
-    <button id="sign-up" class="btn">Sign Up</button>
-    <button id="sign-in" class="btn">Sign In</button>
+    <button @click="showSignUp" class="btn">Sign Up</button>
+    <button @click="showSignIn" class="btn">Sign In</button>
   </section>
 
-  <section class="sign-up">
-    <article class="signup-left">
-      <h1>Destiny</h1>
-      <div class="wc_message">
-        <h3>Let's Kick Now!</h3>
-        <p>It's Easy and takes less then 30 seconds.</p>
-      </div>
-      <div class="btn-back">
-        <i class="fas fa-2x fa-angle-left angle-left-color"></i>
-        HOME
-      </div>
-    </article>
-
-    <article class="form-area">
+  
+  
+    <div v-if="isSignUpVisible || isSignInVisible" class="sign-up">
+      <section class="sign-up">
+        <article class="signup-left">
+          <h1>ITTY</h1>
+          <div v-if="isSignUpVisible">
+          <div class="wc_message">
+            <h3>Join us!</h3>
+            <p>It's Easy and takes less then 30 seconds.</p>
+          </div>
+        </div>
+          <div class="btn-back" @click="showHome">
+            <i class="fas fa-2x fa-angle-left angle-left-color"></i>
+            HOME
+          </div>
+        </article>
+      </section>
+      
+      
+      <transition name="slide-fade">
       <!-- Form area Sign Up -->
-      <div class="organize-form form-area-signup">
+      <div class="organize-form form-area-signup" v-if="isSignUpVisible">
+        
         <h2>SIGN UP</h2>
         <form class="form">
-          <div class="form-field">
-            <label for="name">Name</label>
-            <input type="text" id="name" />
+          
+                <div class="form-field">
+                  <label for="email">Email</label>
+                  <input type="text" id="email" />
+                </div>
+                
+                <div class="form-field">
+                  <label for="password">Password</label>
+                  <input type="text" id="password" />
+                </div>
+                
+                <div class="form-field">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" />
+                </div>
+
+                <div class="form-field">
+                  <label for="name">Nickname</label>
+                  <input type="text" id="nickname" />
+                </div>
+
+                <div class="form-field">
+                  <label for="name">Phone</label>
+                  <input type="text" id="phonenumber" />
+                </div>
+                
+                <button class="btn-sign btn-up">Sign Up</button>
+              </form>
+              <p>Have an account? <a href="#" @click.prevent="showSignIn">Sign In</a></p>
+            </div>
+          </transition>
+     
           </div>
-
-          <div class="form-field">
-            <label for="email">Email</label>
-            <input type="text" id="email" />
+         
+        
+        <transition name="slide-fade">
+          <!-- Form area Sign In -->
+          <div class="organize-form form-area-signin" v-if="isSignInVisible">
+            <h2>SIGN IN</h2>
+            <form class="form">
+              <div class="form-field">
+                <label for="email-in">Email</label>
+                <input type="text" name="email_in" id="email-in" />
+              </div>
+              
+              <div class="form-field">
+                <label for="password-in">Password</label>
+                <input type="text" name="password_in" id="password-in" />
+              </div>
+              
+              <button class="btn-sign btn-in">Sign In</button>
+            </form>
+            <p>Have an account? <a href="#" @click.prevent="showSignUp">Sign Up</a></p>
           </div>
-
-          <div class="form-field">
-            <label for="password">Password</label>
-            <input type="text" id="password" />
-          </div>
-
-          <button class="btn-sign btn-up">Sign Up</button>
-        </form>
-        <p>Have an account? <a href="#" class="link-in">Sign In</a></p>
-
-      </div>
-
-      <!-- Form area Sign In -->
-      <div class="organize-form form-area-signin">
-        <h2>SIGN IN</h2>
-        <form class="form">
-          <div class="form-field">
-            <label for="email-in">Email</label>
-            <input type="text" name="email_in" id="email-in" />
-          </div>
-
-          <div class="form-field">
-            <label for="password-in">Password</label>
-            <input type="text" name="password_in" id="password-in" />
-          </div>
-
-          <button class="btn-sign btn-in">Sign In</button>
-        </form>
-        <p>Haven't an account? <a href="#" class="link-up">Sign Up</a></p>
-      </div>
-    </article>
-
-    <article class="signup-right">
-      <i class="fas fa-2x fa-bars bars-style"></i>
-
-    </article>
-  </section>
-</main>
-
+        
+        </transition>
+        
+    
+        <article class="signup-right">
+          <i class="fas fa-2x fa-bars bars-style"></i>
+        </article>
+  </main>
+</body>
+      
 </template>
 
-<script setup>
+<script>
+ export default {
+  
+  data() {
+    return {
+      isSignUpVisible: false,
+      isSignInVisible: false,
+    };
+  },
+  methods: {
+    showSignUp() {
+      console.log("Sign Up");
+      this.isSignUpVisible = true;
+      this.isSignInVisible = false;
+    },
+    showSignIn() {
+      console.log("Sign In");
+      this.isSignInVisible = true;
+      this.isSignUpVisible = false;
+    },
+    showHome() {
+      this.isSignUpVisible = false;
+      this.isSignInVisible = false;
+    }
+  }
+}
 
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans:400,700&display=swap");
+@import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SejonghospitalBold.woff2');
 
+.sejongBold {
+  font-family: 'SejonghospitalBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SejonghospitalBold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* font-family: 'Abril Fatface', cursive;
+font-family: 'Open Sans', sans-serif; */
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  line-height: 1.5em;
+  color: #747474;
+  font-size: 15px;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+}
+
+.main {
+
+  margin: auto;
+  border-radius: 10px;
+  /* display: flex; */
+  /* background: rgb(249, 63, 76); */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.1s ease-in 0.1s;
+}
+
+.home {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  color: white;
+  background: rgb(75, 67, 99);
+  display: flex; /* flex or none */
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 1;
+  transition: all 0.4s ease-in 0.2s;
+}
+
+.home h1 {
+  margin-bottom: 80px;
+  color: white;
+  text-align: center;
+}
+
+.home h1 span {
+  color: white;
+  display: block;
+  font-size: 6em;
+  font-family: "Abril Fatface", cursive;
+}
+
+.home p {
+  margin-top: 40px;
+}
+
+.home p a {
+  color: white;
+}
+
+.btn {
+  background: none;
+  border: 2px solid white;
+  border-radius: 150px;
+  align-self: center;
+  width: 200px;
+  height: 80px;
+  padding: 8px 16px;
+  margin: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out 0.1s;
+}
+.btn:hover {
+  background: white;
+  color: rgb(75, 67, 99);
+}
+
+.sign-up {
+  width: 100%;
+  height: 100%;
+}
+
+.signup-left {
+  height: 100%;
+  width: 50%;
+  padding: 20px;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  font-size: 14px;
+  background: rgb(75, 67, 99);
+  border-radius: 10px 0 0 10px;
+  transition: all 0.5s ease-in 0.2s;
+}
+
+.signup-left h1 {
+  font-size: 21px;
+  font-family: "Abril Fatface", cursive;
+  letter-spacing: 2px;
+}
+.signup-left h1,
+.signup-left div,
+.signup-left h3,
+.signup-left p {
+  color: white;
+}
+
+.signup-left h3 {
+  font-size: 2.2em;
+}
+
+.btn-back {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.angle-left-color {
+  color: white;
+  margin-right: 5px;
+}
+
+.form-area {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  width: 20%;
+  height: 60%;
+  padding: 20px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  
+
+}
+
+.organize-form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.organize-form h2 {
+  font-size: 1.4em;
+  font-weight: normal;
+}
+
+.organize-form h2::after {
+  content: "";
+  display: block;
+  width: 50%;
+  height: 2px;
+  background: rgb(75, 67, 99);
+  margin: 0 auto;
+}
+
+.organize-form p a {
+  color: rgb(75, 67, 99);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.form-area-signup {
+  position: absolute;
+  top: 20%;
+  left: 35%;
+  width: 30%;
+  height: 70%;
+  padding: 20px 0;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+
+  /* display: none; */
+  opacity: 1;
+  transition: all 0.4s ease-in 0.2s;
+}
+
+.form-area-signin {
+  position: absolute;
+  top: 25%;
+  left: 37%;
+  width: 25%;
+  height: 50%;
+  padding: 20px 0;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+
+  /* display: none; */
+  opacity: 1;
+  transition: all 0.4s ease-in 0.2s;
+}
+
+
+.form {
+  width: 85%;
+}
+.form-field {
+  display: flex;
+  flex-flow: column wrap;
+  width: 100%;
+}
+.form-field input {
+  border: none;
+  padding: 5px;
+  border-bottom: 1px solid rgba(116, 116, 116, 0.44);
+  height: 30px;
+  transition: border-bottom 0.1s ease-in-out 0.1s;
+}
+
+.form-field input:focus {
+  border-bottom: 1px solid rgb(75, 67, 99);
+}
+.form-field label {
+  position: relative;
+  top: 25px;
+  left: 5px;
+  cursor: text;
+  transition: all 0.2s ease-in-out 0.1s;
+  color: rgba(116, 116, 116, 0.44);
+  user-select: none;
+}
+
+.btn-sign {
+  border: none;
+  background: rgb(75, 67, 99);
+  color: white;
+  font-weight: bold;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.1s ease 0.1s;
+}
+.btn-sign:hover {
+  background: rgb(138, 135, 155);
+}
+
+.signup-right {
+  width: 50%;
+  /* padding: 20px;*/
+  background: white;
+  border-radius: 0 10px 10px 0;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: 235% 50%;
+
+  opacity: 1;
+  transition: all 0.5s ease-in 0.2s, background-position-x 0.5s ease-in 0.2s;
+}
+
+.bars-style {
+  color: rgb(75, 67, 99);
+  cursor: pointer;
+  font-size: 16px;
+}
+
+
+/* Slide-Fade Transition */
+.slide-fade-enter-active, .slide-fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+@media (max-width: 1920px) {
+  .main {
+    width: 100%;
+    height: 100%;
+  }
+  .home, .signup-left { border-radius: 0; }
+  .form-area {
+    left: 35%;
+    width: 30%;
+    height: 70%;
+  }
+}
+
+.wc_message {
+    font-family: 'SejonghospitalBold';
+    opacity: 1;
+    transition: opacity .1s;
+  }
+
+@media (max-width: 768px) {
+  .form-area {
+    left: 20%;
+    width: 60%;
+  }
+  .wc_message {
+/*     display: none; */
+    opacity: 0;
+    transition: opacity .1s;
+  }
+}
+
+@media (max-width: 375px) {
+  .form-area {
+    left: 10%;
+    width: 80%;
+  }
+}
 </style>
