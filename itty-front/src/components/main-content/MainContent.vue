@@ -124,7 +124,7 @@
 
 <script setup>
 
-    import {ref, onBeforeMount , onMounted} from 'vue';
+    import { ref, onMounted } from 'vue';
     import { useRouter } from 'vue-router';
 
     const router = useRouter();
@@ -137,29 +137,7 @@
 * License: https://bootstrapmade.com/license/
 */
 
-document.addEventListener('DOMContentLoaded', () => {
-    "use strict";
-
-    /**
-     * Preloader
-     */
-    const preloader = document.querySelector('#preloader');
-    if (preloader) {
-        window.addEventListener('load', () => {
-            preloader.remove();
-        });
-    }
-
-    /**
-     * Sticky header on scroll
-     */
-    const selectHeader = document.querySelector('#header');
-    if (selectHeader) {
-        document.addEventListener('scroll', () => {
-        window.scrollY > 100 ? selectHeader.classList.add('sticked') : selectHeader.classList.remove('sticked');
-    });
-    }
-
+onMounted(() => {
     /**
      * Navbar links active state on scroll
      */
@@ -225,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
 
     /**
-     * Scroll with ofset on page load with hash links in the url
+     * Scroll with offset on page load with hash links in the url
      */
     window.addEventListener('load', () => {
         if (window.location.hash) {
@@ -426,7 +404,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('load', () => {
         aos_init();
     });
-
 });
 
 </script>

@@ -227,7 +227,7 @@ section {
 
 .header {
   padding: 15px 0;
-  transition: all 0.5s;
+  transition: all 0.2s;
   z-index: 997;
 }
 

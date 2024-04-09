@@ -201,16 +201,6 @@
 <script setup>
     import MainHeader from '@/components/Header.vue';
     import MainFooter from '@/components/Footer.vue';
-
-    import {ref, onBeforeMount , onMounted} from 'vue';
-
-    onMounted(() => {
-        const preloader = document.querySelector('#preloader');
-        console.log(preloader);
-        if (preloader) {
-            preloader.remove();
-        }
-    });
 </script>
 
 <style scoped>
