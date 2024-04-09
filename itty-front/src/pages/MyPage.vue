@@ -5,7 +5,10 @@
       <MyPageUserInfo />
     </div>
     <div id="profile">
-      <UserProfile />
+      <UserProfile/>
+
+      <RouterView/>
+      
 
     </div>
   </div>
@@ -15,11 +18,18 @@
 </template>
 
 <script setup>
+    import { RouterView } from 'vue-router';
     import MypageHeader from '@/components/Header.vue';
     import MyPageUserInfo from '@/components/mypage-content/MyPageContent.vue';
     import UserProfile from '@/components/mypage-content/UserProfile.vue';
+    import ProfileInfo from '@/components/mypage-content/UserInfo.vue';
+    import UserScrap from '@/components/mypage-content/UserScrap.vue';
+    import UserHistory from '@/components/mypage-content/UserHistory.vue';
+    import ModifyUserInfo from '@/components/mypage-content/ModifyUserInfo.vue';
+    import UserSignout from '@/components/mypage-content/UserSignout.vue';
 
     import MypageFooter from '@/components/Footer.vue';
+import UserInfo from '@/components/mypage-content/UserInfo.vue';
 
     
 </script>

@@ -23,7 +23,7 @@
   }
   
   /* 활성 탭 스타일 */
-  .All, .Scrap, .History, .ModifyUser, .QnA, .Signout {
+  .all, .scrap, .history, .modifyUser, .qna, .signout {
     background-color: #f0f0f0;
     color: #333;
     font-weight: bold;
