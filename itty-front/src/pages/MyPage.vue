@@ -7,11 +7,7 @@
     <div id="profile">
       <UserProfile/>
 
-      <UserScrap/>
-      <ProfileInfo/>
-      <UserHistory/>
-      <ModifyUserInfo/>
-      <UserSignout/>
+      <RouterView/>
       
 
     </div>

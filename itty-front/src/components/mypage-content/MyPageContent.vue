@@ -1,11 +1,11 @@
 <template>
   <div class="userInfo">
-    <div id="All" @click="changeUserInfo('')" :class="{All: activeUserInfo == ''}" >내 정보</div><hr><br>
-    <div id="Scrap" @click="changeUserInfo(1)" :class="{Scrap: activeUserInfo == 1}">스크랩</div><hr><br>
-    <div id="History" @click="changeUserInfo(2)" :class="{History: activeUserInfo == 2}">활동 내역</div><hr><br>
-    <div id="ModifyUser" @click="changeUserInfo(3)" :class="{ModifyUser: activeUserInfo == 3}">회원 정보 수정</div><hr><br>
-    <div id="QnA" @click="changeUserInfo(4)" :class="{QnA: activeUserInfo == 4}">문의</div><hr><br>
-    <div id="Signout" @click="changeUserInfo(5)" :class="{Signout: activeUserInfo == 5}">회원탈퇴</div><hr><br>
+    <div id="all" @click="changeUserInfo('')" :class="{All: activeUserInfo == ''}" >내 정보</div><hr><br>
+    <div id="scrap" @click="changeUserInfo(1)" :class="{Scrap: activeUserInfo == 1}">스크랩</div><hr><br>
+    <div id="history" @click="changeUserInfo(2)" :class="{History: activeUserInfo == 2}">활동 내역</div><hr><br>
+    <div id="modifyUser" @click="changeUserInfo(3)" :class="{ModifyUser: activeUserInfo == 3}">회원 정보 수정</div><hr><br>
+    <div id="qna" @click="changeUserInfo(4)" :class="{QnA: activeUserInfo == 4}">문의</div><hr><br>
+    <div id="signout" @click="changeUserInfo(5)" :class="{Signout: activeUserInfo == 5}">회원탈퇴</div><hr><br>
   </div>
 </template>
 
@@ -20,6 +20,27 @@ function changeUserInfo(userInfo) {
   console.log(userInfo);
   activeUserInfo.value = userInfo;
   emit('change', userInfo);
+
+  switch (userInfo) {
+    case '':
+      router.push('/mypage'); // '내 정보'에 해당하는 라우트로 변경
+      break;
+    case 1:
+      router.push('/mypage/userscrap'); // '스크랩'에 해당하는 라우트로 변경
+      break;
+    case 2:
+      router.push('/mypage/userhistory'); // '활동 내역'에 해당하는 라우트로 변경
+      break;
+    case 3:
+      router.push('/mypage/modifyuserinfo'); // '회원 정보 수정'에 해당하는 라우트로 변경
+      break;
+    case 4:
+      router.push('/mypage/userqna'); // '문의'에 해당하는 라우트로 변경 (QnA라는 라우트가 정의되어 있어야 함)
+      break;
+    case 5:
+      router.push('/mypage/usersignout'); // '회원탈퇴'에 해당하는 라우트로 변경
+      break;
+  }
 }
 
 const router = useRouter();
