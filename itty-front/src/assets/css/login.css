@@ -11,7 +11,7 @@ font-family: 'Open Sans', sans-serif; */
   line-height: 1.5em;
   color: #747474;
   font-family: "Open Sans", sans-serif;
-  font-size: 15px;
+  font-size: 16px;
 }
 body {
   height: 100vh;
@@ -22,7 +22,7 @@ body {
   height: 75%;
   margin: auto;
   border-radius: 10px;
-  /* display: flex; */
+  display: flex;
   /* background: rgb(249, 63, 76); */
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   transition: all 0.1s ease-in 0.1s;
@@ -65,33 +65,36 @@ a.link-copy {
 .btn {
   background: none;
   border: 2px solid white;
-  border-radius: 150px;
+  border-radius: 30px; /* 버튼 모서리 둥글기 조정 */
   align-self: center;
   width: 200px;
   height: 80px;
-  padding: 8px 16px;
+  padding: 12px 24px; /* 버튼 패딩 조정 */
   margin: 10px;
   color: white;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.1s ease-in-out 0.1s;
+  transition: background-color 0.3s, color 0.3s; /* 부드러운 색상 전환 효과 */
 }
 .btn:hover {
-  background: white;
-  color: rgb(75, 67, 99);
+  background: rgb(138, 135, 155); /* 버튼 호버 상태의 배경색 변경 */
+  color: white; /* 버튼 텍스트 색상 변경 */
 }
 
 /* PAGE SING UP */
 .sign-up {
-  display: none; /*flex or none*/
-  opacity: 1;
+  display: flex;
+  flex-direction: column; /* 자식 요소들을 세로로 정렬 */
+  align-items: center; /* 중앙 정렬 */
+  justify-content: center; /* 내용을 중앙에 배치 */
   width: 100%;
   height: 100%;
 }
+
 .signup-left {
   width: 50%;
   /* padding: 20px; */
-  opacity: 0;
+  opacity: 1;
   display: flex;
   flex-flow: column wrap;
   justify-content: space-between;
@@ -127,18 +130,18 @@ a.link-copy {
   margin-right: 5px;
 }
 .form-area {
-  position: absolute;
-  top: 20%;
-  left: 40%;
-  width: 20%;
-  height: 60%;
-  padding: 20px 0;
+  position: relative; /* 절대 위치 대신 상대 위치를 사용할 수 있음 */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 중앙 정렬 */
+  width: 60%; /* 너비 조정 */
+  height: auto; /* 높이 자동 조정 */
+  padding: 20px;
   background: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   z-index: 2;
-
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.5s ease-in 0.2s;
 }
 .organize-form {
@@ -168,12 +171,12 @@ a.link-copy {
 }
 .form-area-signup {
   /* display: none; */
-  opacity: 0; 
+  opacity: 1;
   transition: all 0.4s ease-in 0.2s;
 }
 .form-area-signin {
   /* display: none; */
-  opacity: 0;
+  opacity: 1;
   transition: all 0.4s ease-in 0.2s;
 }
 
@@ -192,8 +195,12 @@ a.link-copy {
   height: 30px;
   transition: border-bottom 0.1s ease-in-out 0.1s;
 }
-.form-field input:focus {
-  border-bottom: 1px solid rgb(75, 67, 99);
+
+.form-field input:focus + label {
+  color: rgb(75, 67, 99); /* 포커스 시 레이블 색상 변경 */
+  top: -10px; /* 포커스 시 레이블 위치 조정 */
+  transition: all 0.2s ease-in-out; /* 부드러운 전환 효과 */
+  border-bottom: 2px solid rgb(75, 67, 99); /* 포커스 상태의 하단 테두리 강조 */
 }
 .form-field label {
   position: relative;
@@ -217,7 +224,8 @@ a.link-copy {
   transition: background 0.1s ease 0.1s;
 }
 .btn-sign:hover {
-  background: rgb(138, 135, 155);
+  background: rgb(138, 135, 155); /* 버튼 호버 상태의 배경색 변경 */
+  color: white; /* 버튼 텍스트 색상 변경 */
 }
 .signup-right {
   width: 50%;
@@ -232,7 +240,7 @@ a.link-copy {
   background-repeat: no-repeat;
   background-position: 235% 50%;
 
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.5s ease-in 0.2s, background-position-x 0.5s ease-in 0.2s;
 }
 .bars-style {
@@ -254,13 +262,24 @@ a.link-copy {
   }
 }
 @media (max-width: 768px) {
+  .main {
+    width: 90%; /* 모바일 화면에서 메인 컨테이너 너비 조정 */
+    height: auto; /* 높이를 auto로 조정하여 내용에 맞게 확장 */
+  }
+
+  .form-area {
+    width: 80%; /* 모바일 화면에서 폼 영역 너비 조정 */
+    top: 30%; /* 모바일 화면에서 폼 영역 상단 위치 조정 */
+    left: 50%; /* 가운데 정렬 유지 */
+    transform: translate(-50%, -30%); /* 정확한 가운데 정렬을 위한 조정 */
+  }
   .form-area {
     left: 20%;
     width: 60%;
   }
   .wc_message {
 /*     display: none; */
-    opacity: 0;
+    opacity: 1;
     transition: opacity .1s;
   }
 }
