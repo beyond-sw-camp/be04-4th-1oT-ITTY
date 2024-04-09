@@ -1,7 +1,7 @@
 <template>
     <header id="header" class="header fixed-top" data-scrollto-offset="0">
         <div class="container-fluid d-flex align-items-center justify-content-evenly">
-            <a href="index.html" class=""><img style="border-radius: 20%; scale:70%" src="@/assets/img/logo-itty.jpg" width="130px" height="auto"></a>
+            <a @click="navigateToHome" style="cursor: pointer;"><img style="border-radius: 20%; scale:70%" src="@/assets/img/logo-itty.jpg" width="130px" height="auto"></a>
             <nav id="navbar" class="navbar">
                 <ul>
                     <li class="dropdown">
@@ -36,7 +36,7 @@
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle d-none"></i>
             </nav><!-- .navbar -->
-            <a class="btn-getstarted scrollto" @click="navigateToLogin">로그인</a>
+            <a class="btn-getstarted scrollto" style="cursor: pointer;" @click="navigateToLogin">로그인</a>
         </div>
     </header><!-- End Header -->
 </template>
@@ -53,6 +53,10 @@
 
     function navigateToLogin() {
         router.push('/login');
+    }
+
+    function navigateToHome() {
+        router.replace('/');
     }
 
     onMounted(() => {
