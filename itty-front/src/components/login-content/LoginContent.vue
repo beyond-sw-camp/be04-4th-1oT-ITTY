@@ -1,4 +1,5 @@
 <template>
+
   <body>
 
 <main class="main">
@@ -131,6 +132,7 @@
 </script>
 
 <style scoped>
+
 @import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans:400,700&display=swap");
 @import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SejonghospitalBold.woff2');
 
@@ -460,4 +462,5 @@ body {
     width: 80%;
   }
 }
+
 </style>

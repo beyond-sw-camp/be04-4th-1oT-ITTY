@@ -22,9 +22,7 @@
     import MypageHeader from '@/components/Header.vue';
     import MyPageUserInfo from '@/components/mypage-content/MyPageContent.vue';
     import UserProfile from '@/components/mypage-content/UserProfile.vue';
-
-
-    
+ 
 </script>
 
 <style scoped>

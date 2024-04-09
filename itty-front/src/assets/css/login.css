@@ -17,7 +17,6 @@ body {
   height: 100vh;
   display: flex;
 }
-
 .main {
   width: 70%;
   height: 75%;
@@ -34,7 +33,7 @@ body {
   height: 100%;
   border-radius: 10px;
   color: white;
-  background: rgb(249, 63, 76);
+  background: rgb(75, 67, 99);
   display: flex; /* flex or none */
   flex-flow: column wrap;
   justify-content: center;
@@ -51,7 +50,7 @@ body {
 .home h1 span {
   color: white;
   display: block;
-  font-size: 2.5em;
+  font-size: 6em;
   font-family: "Abril Fatface", cursive;
 }
 .home p {
@@ -100,7 +99,7 @@ a.link-copy {
   flex-flow: column wrap;
   justify-content: space-between;
   font-size: 14px;
-  background: rgb(249, 63, 76);
+  background: rgb(75, 67, 99);
   border-radius: 10px 0 0 10px;
   transition: all 0.5s ease-in 0.2s;
 }
@@ -162,11 +161,11 @@ a.link-copy {
   display: block;
   width: 50%;
   height: 2px;
-  background: rgb(249, 63, 76);
+  background: rgb(75, 67, 99);
   margin: 0 auto;
 }
 .organize-form p a {
-  color: rgb(249, 63, 76);
+  color: rgb(75, 67, 99);
   text-decoration: none;
   font-weight: bold;
 }
@@ -196,6 +195,7 @@ a.link-copy {
   height: 30px;
   transition: border-bottom 0.1s ease-in-out 0.1s;
 }
+
 .form-field input:focus + label {
   color: rgb(75, 67, 99); /* 포커스 시 레이블 색상 변경 */
   top: -10px; /* 포커스 시 레이블 위치 조정 */
@@ -213,7 +213,7 @@ a.link-copy {
 }
 .btn-sign {
   border: none;
-  background: rgb(249, 63, 76);
+  background: rgb(75, 67, 99);
   color: white;
   font-weight: bold;
   width: 100%;
@@ -236,7 +236,6 @@ a.link-copy {
   flex-flow: column wrap;
   justify-content: space-between;
   align-items: flex-end;
-  background-image: url("https://i.pinimg.com/564x/cc/51/8a/cc518a8b056431fb434240676d1e77fb.jpg");
   background-size: 70%;
   background-repeat: no-repeat;
   background-position: 235% 50%;
@@ -245,12 +244,12 @@ a.link-copy {
   transition: opacity 0.5s ease-in 0.2s, background-position-x 0.5s ease-in 0.2s;
 }
 .bars-style {
-  color: rgb(249, 63, 76);
+  color: rgb(75, 67, 99);
   cursor: pointer;
   font-size: 16px;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1920px) {
   .main {
     width: 100%;
     height: 100%;
@@ -290,8 +289,4 @@ a.link-copy {
     left: 10%;
     width: 80%;
   }
-}
-
-#app {
-    width: 100%;
 }

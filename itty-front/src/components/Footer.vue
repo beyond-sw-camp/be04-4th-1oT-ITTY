@@ -8,7 +8,7 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-info">
                         <h3>ITTY</h3>
-                        <p>서울특별시 동작구 보라매로 87<br>우편번호07060신이빌딩지번서울특별시 동작구 신대방동 344-4 <br><br><br>
+                        <p>서울특별시 동작구 보라매로 87<br>우편번호 : 07060 신이빌딩<br>지번 : 서울특별시 동작구 신대방동 344-4<br><br>
                             <strong>Phone:</strong> +82 1234-5678<br>
                             <strong>Email:</strong> email@example.com<br>
                         </p>
