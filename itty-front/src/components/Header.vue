@@ -20,7 +20,7 @@
 
           <li><a class="nav-link scrollto" href="index.html#about">Guide</a></li>
           <li><a class="nav-link scrollto" href="index.html#services">Services</a></li>
- 
+
           <li class="dropdown"><a href="#"><span>게시판</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li class="dropdown"><a><span>트렌드 게시판</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
@@ -43,7 +43,7 @@
         <i class="bi bi-list mobile-nav-toggle d-none"></i>
       </nav><!-- .navbar -->
 
-      <a class="btn-getstarted scrollto" href="index.html#about">로그인</a>
+      <a class="btn-getstarted scrollto" @click="navigateToLogin">로그인</a>
 
     </div>
   </header><!-- End Header -->
@@ -56,6 +56,10 @@
 
   function navigateToTrendBoard() {
     router.push('/trend-board');
+  }
+
+  function navigateToLogin() {
+    router.push('/login');
   }
 </script>
 
