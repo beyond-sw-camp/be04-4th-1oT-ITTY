@@ -19,11 +19,12 @@
                         <ul>
                             <li class="dropdown"><a><span>트렌드 게시판</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                                 <ul>
-                                    <li><a @click="navigateToTrendBoard">IT정보(전체) 게시판</a></li>
-                                    <li><a href="#">BACKEND</a></li>
-                                    <li><a href="#">FRONTEND</a></li>
-                                    <li><a href="#">DEVOPS</a></li>
-                                    <li><a href="#">AI</a></li>
+                                    <li><a @click="navigateToTrendBoard">전체</a></li>
+                                    <li><a href="#">IT기업</a></li>
+                                    <li><a href="#">IT·과학</a></li>
+                                    <li><a href="#">포털/플랫폼</a></li>
+                                    <li><a href="#">디지털마케팅</a></li>
+                                    <li><a href="#">보안/해킹</a></li>
                                 </ul>
                             </li>
                             <li><a href="#">경력직 개발자 관련 게시판</a></li>

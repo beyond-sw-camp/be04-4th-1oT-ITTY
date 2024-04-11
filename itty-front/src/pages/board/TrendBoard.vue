@@ -120,10 +120,11 @@
                 <nav id="nav">
                     <ul>
                         <li class="current"><a href="#">전체</a></li>
-                        <li><a href="#">백엔드</a></li>
-                        <li><a href="#">프론트엔드</a></li>
-                        <li><a href="#">데브옵스</a></li>
-                        <li><a href="#">AI</a></li>
+                        <li><a href="#">IT기업</a></li>
+                        <li><a href="#">IT·과학</a></li>
+                        <li><a href="#">포털/플랫폼</a></li>
+                        <li><a href="#">디지털마케팅</a></li>
+                        <li><a href="#">보안/해킹</a></li>
                     </ul>
                 </nav>
                 <!-- Search -->
