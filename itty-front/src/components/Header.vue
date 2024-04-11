@@ -47,7 +47,6 @@
                     <div>
                         <ul style="width: 179px;" class="dropdown-menu">
                             <li><a class="dropdown-item" @click="navigateToUserProfile(userCode)" >내 프로필</a></li>
-                            <li><a class="dropdown-item" href="#">설정</a></li>
                             <li><a class="dropdown-item" @click="logout">로그아웃</a></li>
                         </ul>
                     </div>
@@ -106,7 +105,6 @@
 
         const accessToken = 'accessToken';
         isBeforeLogin.value = !accessToken;
-        console.log(isBeforeLogin.value);
     });
 </script>
 
