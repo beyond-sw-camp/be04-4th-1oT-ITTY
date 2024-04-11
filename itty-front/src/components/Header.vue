@@ -7,10 +7,10 @@
                     <li class="dropdown">
                         <a href="#"><span>Home</span><i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
-                            <li><a href="index.html" class="active">공지사항</a></li>
-                            <li><a href="index.html">FAQ</a></li>
-                            <li><a href="index.html">1oT</a></li>
-                            <li><a href="index.html">EVENT</a></li>
+                            <li><a href="#" class="active">공지사항</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">1oT</a></li>
+                            <li><a @click="navigateToEvent">EVENT</a></li>
                         </ul>
                     </li>
                     <li><a class="nav-link scrollto" href="index.html#about">Guide</a></li>
@@ -30,7 +30,7 @@
                             <li><a href="#">스터디 모집 게시판</a></li>
                             <li><a href="#">공모전 게시판</a></li>
                             <li><a href="#">논문 게시판</a></li>
-                            <li><a href="#">자유 게시판</a></li>
+                            <li><a @click="navigateToFreeBoard">자유 게시판</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -67,6 +67,14 @@
 
     function navigateToTrendBoard() {
         router.push('/trend-board');
+    }
+
+    function navigateToFreeBoard() {
+        router.push('/free-board');
+    }
+
+    function navigateToEvent() {
+        router.replace('/event-board');
     }
 
     function navigateToLogin() {
