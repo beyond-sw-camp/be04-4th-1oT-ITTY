@@ -24,7 +24,7 @@
       </tbody>
     </table>
     <div class="createPost" style="text-align: right;">
-      <button type="submit" class="create-btn">글 작성</button>
+      <button type="submit" class="create-btn" @click="createPost">글 작성</button>
     </div>
     <div class="controls">
             <select v-model="searchOption" class="search-select">
@@ -46,22 +46,30 @@
   import MainHeader from '@/components/Header.vue';
   import MainFooter from '@/components/Footer.vue';
 
+  import { useRouter } from "vue-router";
+
   import { ref } from 'vue';
 
-const posts = ref([
-  // 예시 게시글 데이터
-  { id: 1, title: '게시글 제목 1', author: '작성자1', date: '2024-01-01', views: 100 },
-  { id: 2, title: '게시글 제목 2', author: '작성자2', date: '2024-01-02', views: 150 },
-  // 추가 게시글 데이터...
-]);
+  const router = useRouter();
 
-const searchQuery = ref('');
+  const posts = ref([
+    // 예시 게시글 데이터
+    { id: 1, title: '게시글 제목 1', author: '작성자1', date: '2024-01-01', views: 100 },
+    { id: 2, title: '게시글 제목 2', author: '작성자2', date: '2024-01-02', views: 150 },
+    // 추가 게시글 데이터...
+  ]);
 
-const searchPost = () => {
-  alert('검색창 구현 예정');
-};
+  const searchQuery = ref('');
 
-const searchOption = ref('title'); // 기본 검색 옵션
+  const searchPost = () => {
+    alert('검색창 구현 예정');
+  };
+
+  const createPost = () => {
+    router.push('/free-board/new');
+  };
+
+  const searchOption = ref('title'); // 기본 검색 옵션
 
   </script>
   
@@ -109,7 +117,7 @@ button {
 /* 전체 폰트 설정을 좀 더 세련된 것으로 변경 */
 body {
   font-family: 'SejonghospitalBold', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #ffffff;
   color: #333;
 }
 
