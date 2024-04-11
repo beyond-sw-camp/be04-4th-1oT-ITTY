@@ -138,6 +138,8 @@
 */
 
 onMounted(() => {
+
+    console.log("오냐?");
     /**
      * Navbar links active state on scroll
      */

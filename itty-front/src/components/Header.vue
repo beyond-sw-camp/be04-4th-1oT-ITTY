@@ -13,8 +13,8 @@
                             <li><a @click="navigateToEvent">EVENT</a></li>
                         </ul>
                     </li>
-                    <li><a class="nav-link scrollto" href="index.html#about">Guide</a></li>
-                    <li><a class="nav-link scrollto" href="index.html#services">Services</a></li>
+                    <li><a class="nav-link scrollto" href="#about">Guide</a></li>
+                    <li><a class="nav-link scrollto" href="#services">Services</a></li>
                     <li class="dropdown"><a href="#"><span>게시판</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
                             <li class="dropdown"><a><span>트렌드 게시판</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
@@ -36,7 +36,7 @@
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle d-none"></i>
             </nav><!-- .navbar -->
-            <div>
+            <div style="width: 130px; text-align: center;">
                 <a v-if="isBeforeLogin" class="btn-getstarted scrollto" style="cursor: pointer;" @click="navigateToLogin">로그인</a>
 
                 <div v-else style="cursor: pointer;">

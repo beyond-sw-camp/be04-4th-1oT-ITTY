@@ -658,7 +658,7 @@ table {
 }
 
 table tbody tr:nth-child(2n+2) {
-    background: #f4f4f4;
+    background: #ffffff;
 }
 
 table td {
@@ -1457,7 +1457,7 @@ ol li {
     }
 
     .box.post .info .stats li:hover a {
-        background-color: #f4f4f4;
+        background-color: #ffffff;
         opacity: 1.0;
     }
 
@@ -1986,7 +1986,7 @@ ol li {
 
 /* Declare heights because of positioning of img element */
 .carousel-item {
-    height: 32rem;
+    height: 20rem;
     margin-right: -100%;
 }
 
