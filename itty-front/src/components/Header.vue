@@ -36,7 +36,22 @@
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle d-none"></i>
             </nav><!-- .navbar -->
-            <a class="btn-getstarted scrollto" style="cursor: pointer;" @click="navigateToLogin">로그인</a>
+            <div>
+                <a v-if="isBeforeLogin" class="btn-getstarted scrollto" style="cursor: pointer;" @click="navigateToLogin">로그인</a>
+
+                <div v-else style="cursor: pointer;">
+                    <div class="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="profile" src="@/assets/img/icon-user.png" />
+                    </div>
+
+                    <div>
+                        <ul style="width: 179px;" class="dropdown-menu">
+                            <li><a class="dropdown-item" @click="navigateToUserProfile(userCode)" >내 프로필</a></li>
+                            <li><a class="dropdown-item" @click="logout">로그아웃</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </header><!-- End Header -->
 </template>
@@ -46,6 +61,8 @@
     import { useRouter } from 'vue-router';
 
     const router = useRouter();
+
+    const isBeforeLogin = ref(true);
 
     function navigateToTrendBoard() {
         router.push('/trend-board');
@@ -67,6 +84,13 @@
         router.replace('/');
     }
 
+    function navigateToUserProfile() {
+        router.push('/mypage');
+    }
+
+    function logout() {
+        isBeforeLogin.value = true;
+    }
 
     onMounted(() => {
         /**
@@ -78,9 +102,17 @@
                 window.scrollY > 10 ? selectHeader.classList.add('sticked') : selectHeader.classList.remove('sticked');
             });
         }
+
+        const accessToken = 'accessToken';
+        isBeforeLogin.value = !accessToken;
     });
 </script>
 
 <style scoped>
     @import './main-content/css/main.css';
+
+    .profile {
+        width: 40px;
+        height: 40px;
+    }
 </style>

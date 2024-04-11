@@ -4,7 +4,7 @@
         <div id="content">
             <div class="inner">
                 <!-- Post -->
-                <article class="box post post-excerpt">                    
+                <article class="box post post-excerpt">
                     <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -299,7 +299,7 @@ tfoot, thead, tr, th, td, article, aside,
 canvas, details, embed, figure, figcaption,
 footer, header, hgroup, menu, nav, output, ruby,
 section, summary, time, mark, audio, video {
-	margin: 0;
+    margin: 0;
 	padding: 0;
 	border: 0;
 	font-size: 100%;
@@ -309,7 +309,8 @@ section, summary, time, mark, audio, video {
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav {
-	display: block;}
+	display: block;
+}
 
 section {
 	display: block;
@@ -1942,11 +1943,6 @@ ol li {
         z-index: 10;
     }
 
-    /* Declare heights because of positioning of img element */
-    .carousel-item {
-        height: 32rem;
-    }
-
     carousel-control-next, .carousel-control-prev {
         position: absolute;
         top: 0;
@@ -1986,6 +1982,12 @@ ol li {
             margin-top: 7rem;
         }
     }
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+    height: 32rem;
+    margin-right: -100%;
 }
 
 </style>
