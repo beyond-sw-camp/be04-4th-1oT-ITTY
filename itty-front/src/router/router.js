@@ -11,6 +11,7 @@ import UserHistory from '@/components/mypage-content/UserHistory.vue';
 import UserQnA from '@/components/mypage-content/UserQnA.vue';
 import ModifyUserInfo from '@/components/mypage-content/ModifyUserInfo.vue';
 import UserSignout from '@/components/mypage-content/UserSignout.vue';
+import SelectArticle from '@/pages/board/SelectArticle.vue';
 
 
 const router = createRouter({
@@ -67,6 +68,14 @@ const router = createRouter({
         {
             path: '/event-board',
             component: EventBoard
+        },
+        {
+            path: '/free-board/new',
+            component: NewArticle
+        },
+        {
+            path: '/newArticle/',
+            component: SelectArticle
         }
         
     ]
