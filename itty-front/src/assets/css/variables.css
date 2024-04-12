@@ -130,8 +130,8 @@
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
-  --bs-primary: var(--color-blue);
-  --bs-secondary: var(--color-blue);
+  --bs-primary: var(--color-black);
+  --bs-secondary: var(--color-black);
   --bs-success: #198754;
   --bs-info: #0dcaf0;
   --bs-warning: #ffc107;

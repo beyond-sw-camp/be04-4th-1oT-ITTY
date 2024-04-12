@@ -2,7 +2,7 @@
     <div class="user-info-window">
       <br>
       <div class="user-detail">
-        <label>이름:  </label>
+        <label>  </label>
         <span>{{ userInfo.name }}</span>
       </div>
       <br>

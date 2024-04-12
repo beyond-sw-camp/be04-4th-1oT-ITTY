@@ -8,6 +8,8 @@
     <h1>Welcome to the <span>ITTY</span></h1>
     <button @click="showSignUp" class="btn">Sign Up</button>
     <button @click="showSignIn" class="btn">Sign In</button>
+    <br>
+    <a href="/">MAIN</a> 
   </section>
 
   

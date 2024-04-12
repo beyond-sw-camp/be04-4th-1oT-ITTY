@@ -120,10 +120,11 @@
                 <nav id="nav">
                     <ul>
                         <li class="current"><a href="#">전체</a></li>
-                        <li><a href="#">백엔드</a></li>
-                        <li><a href="#">프론트엔드</a></li>
-                        <li><a href="#">데브옵스</a></li>
-                        <li><a href="#">AI</a></li>
+                        <li><a href="#">IT기업</a></li>
+                        <li><a href="#">IT·과학</a></li>
+                        <li><a href="#">포털/플랫폼</a></li>
+                        <li><a href="#">디지털마케팅</a></li>
+                        <li><a href="#">보안/해킹</a></li>
                     </ul>
                 </nav>
                 <!-- Search -->
@@ -604,7 +605,7 @@ strong, b {
 }
 
 h2, h3, h4, h5, h6 {
-    font-family: 'Open Sans Condensed', sans-serif;
+    /* font-family: 'Open Sans Condensed', sans-serif; */
     font-weight: 700;
     color: #232323;
 }
@@ -658,7 +659,7 @@ table {
 }
 
 table tbody tr:nth-child(2n+2) {
-    background: #f4f4f4;
+    background: #ffffff;
 }
 
 table td {
@@ -1216,7 +1217,7 @@ ol li {
     color: #fff;
     line-height: 44px;
     font-size: 1.25em;
-    font-family: 'Open Sans Condensed', sans-serif;
+    /* font-family: 'Open Sans Condensed', sans-serif; */
     font-weight: 700;
     letter-spacing: 0.1em;
     text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.5);
@@ -1457,13 +1458,13 @@ ol li {
     }
 
     .box.post .info .stats li:hover a {
-        background-color: #f4f4f4;
+        background-color: #ffffff;
         opacity: 1.0;
     }
 
     /* Logo */
     #logo {
-        font-family: 'Open Sans Condensed', sans-serif;
+        /* font-family: 'Open Sans Condensed', sans-serif; */
         font-weight: 700;
         font-size: 2em;
         letter-spacing: 0.1em;
@@ -1986,7 +1987,7 @@ ol li {
 
 /* Declare heights because of positioning of img element */
 .carousel-item {
-    height: 32rem;
+    height: 20rem;
     margin-right: -100%;
 }
 
