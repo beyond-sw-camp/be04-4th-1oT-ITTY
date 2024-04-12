@@ -13,17 +13,18 @@
                             <li><a @click="navigateToEvent">EVENT</a></li>
                         </ul>
                     </li>
-                    <li><a class="nav-link scrollto" href="index.html#about">Guide</a></li>
-                    <li><a class="nav-link scrollto" href="index.html#services">Services</a></li>
+                    <li><a class="nav-link scrollto" href="#about">Guide</a></li>
+                    <li><a class="nav-link scrollto" href="#services">Services</a></li>
                     <li class="dropdown"><a href="#"><span>게시판</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
                             <li class="dropdown"><a><span>트렌드 게시판</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                                 <ul>
-                                    <li><a @click="navigateToTrendBoard">IT정보(전체) 게시판</a></li>
-                                    <li><a href="#">BACKEND</a></li>
-                                    <li><a href="#">FRONTEND</a></li>
-                                    <li><a href="#">DEVOPS</a></li>
-                                    <li><a href="#">AI</a></li>
+                                    <li><a @click="navigateToTrendBoard">전체</a></li>
+                                    <li><a href="#">IT기업</a></li>
+                                    <li><a href="#">IT·과학</a></li>
+                                    <li><a href="#">포털/플랫폼</a></li>
+                                    <li><a href="#">디지털마케팅</a></li>
+                                    <li><a href="#">보안/해킹</a></li>
                                 </ul>
                             </li>
                             <li><a href="#">경력직 개발자 관련 게시판</a></li>
@@ -36,7 +37,22 @@
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle d-none"></i>
             </nav><!-- .navbar -->
-            <a class="btn-getstarted scrollto" style="cursor: pointer;" @click="navigateToLogin">로그인</a>
+            <div style="width: 130px; text-align: center;">
+                <a v-if="isBeforeLogin" class="btn-getstarted scrollto" style="cursor: pointer;" @click="navigateToLogin">로그인</a>
+
+                <div v-else style="cursor: pointer;">
+                    <div class="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="profile" src="@/assets/img/icon-user.png" />
+                    </div>
+
+                    <div>
+                        <ul style="width: 179px;" class="dropdown-menu">
+                            <li><a class="dropdown-item" @click="navigateToUserProfile(userCode)" >내 프로필</a></li>
+                            <li><a class="dropdown-item" @click="logout">로그아웃</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </header><!-- End Header -->
 </template>
@@ -46,6 +62,8 @@
     import { useRouter } from 'vue-router';
 
     const router = useRouter();
+
+    const isBeforeLogin = ref(true);
 
     function navigateToTrendBoard() {
         router.push('/trend-board');
@@ -67,6 +85,13 @@
         router.replace('/');
     }
 
+    function navigateToUserProfile() {
+        router.push('/mypage');
+    }
+
+    function logout() {
+        isBeforeLogin.value = true;
+    }
 
     onMounted(() => {
         /**
@@ -78,9 +103,17 @@
                 window.scrollY > 10 ? selectHeader.classList.add('sticked') : selectHeader.classList.remove('sticked');
             });
         }
+
+        const accessToken = 'accessToken';
+        isBeforeLogin.value = !accessToken;
     });
 </script>
 
 <style scoped>
     @import './main-content/css/main.css';
+
+    .profile {
+        width: 40px;
+        height: 40px;
+    }
 </style>
