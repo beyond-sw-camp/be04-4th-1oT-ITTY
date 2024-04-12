@@ -126,6 +126,8 @@
 
     import { ref, onMounted } from 'vue';
     import { useRouter } from 'vue-router';
+    import * as api from '@/api/api.js';
+    import axios from 'axios';
 
     const router = useRouter();
 
@@ -138,6 +140,16 @@
 */
 
 onMounted(() => {
+    // API 호출 예시
+    api.healthCheck(
+        function(response) {
+            // success handler
+        },
+        function(error) {
+            // error handler
+        }
+    );
+
     /**
      * Navbar links active state on scroll
      */
