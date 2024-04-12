@@ -605,7 +605,7 @@ strong, b {
 }
 
 h2, h3, h4, h5, h6 {
-    font-family: 'Open Sans Condensed', sans-serif;
+    /* font-family: 'Open Sans Condensed', sans-serif; */
     font-weight: 700;
     color: #232323;
 }
@@ -1217,7 +1217,7 @@ ol li {
     color: #fff;
     line-height: 44px;
     font-size: 1.25em;
-    font-family: 'Open Sans Condensed', sans-serif;
+    /* font-family: 'Open Sans Condensed', sans-serif; */
     font-weight: 700;
     letter-spacing: 0.1em;
     text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.5);
@@ -1464,7 +1464,7 @@ ol li {
 
     /* Logo */
     #logo {
-        font-family: 'Open Sans Condensed', sans-serif;
+        /* font-family: 'Open Sans Condensed', sans-serif; */
         font-weight: 700;
         font-size: 2em;
         letter-spacing: 0.1em;
