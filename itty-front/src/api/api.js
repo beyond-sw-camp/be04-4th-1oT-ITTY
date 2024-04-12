@@ -8,8 +8,7 @@ const endpoint = {
 
     // user
     user: 'user/',
-    userModify: 'user/modify',
-    userFollower: `user/${userCode}/follower`
+    userModify: 'user/modify'
 }
 
 function getApiUri(apiEndpoint) {
@@ -30,65 +29,36 @@ function postRequest(apiUri, data, responseCallback, errorCallback) {
 export function healthCheck(responseCallback, errorCallback) {
     const uri = getApiUri(endpoint.healthCheck);
     getRequest(uri, responseCallback, errorCallback);
-
-    // axios.get(getApiUri(endpoint.healthCheck))
-        // .then((response) => {
-            // console.log(response);
-        // }).catch((error) => {
-            // console.log(error);
-        // });
 }
 
-export function regist() {
-    // test user object
-    const userInfo = {
-        userEmail: "test013@example.com",
-        userPassword: "test",
-        userName: "testname",
-        userPhoneNumber: "010-1234-1234",
-        userNickname: "test"
-    }
+export function regist(userInfo, responseCallback, errorCallback) {
+    // const userInfo = {
+    //     userEmail: "test013@example.com",
+    //     userPassword: "test",
+    //     userName: "testname",
+    //     userPhoneNumber: "010-1234-1234",
+    //     userNickname: "test"
+    // }
 
-    axios.post(
-        getApiUri(endpoint.regist),
-        userInfo
-    ).then((response) => {
-        console.log(response);
-    }).catch((error) => {
-        console.log(error);
-    });
+    const uri = getApiUri(endpoint.regist);
+    postRequest(uri, userInfo, responseCallback, errorCallback);
 }
 
 /**
  * User
  */
 export function findUserByUserCode(userCode, responseCallback, errorCallback) {
-    // const uri = getApiUri(endpoint.user + userCode);
-    // getRequest(uri, responseCallback, errorCallback);
-
-    axios.get(getApiUri(endpoint.user + userCode))
-        .then((response) => {
-            console.log(response);
-        }).catch((error) => {
-            console.log(error);
-        });
+    const uri = getApiUri(endpoint.user + userCode);
+    getRequest(uri, responseCallback, errorCallback);
 }
 
-export function modifyUserInfo() {
-    const newUserInfo = {
-        userCodePk: 32,
-        userNickname: "하이하이",
-        userIntroduction: "안녕하시오."
-    }
+export function modifyUserInfo(newUserInfo, responseCallback, errorCallback) {
+    // const newUserInfo = {
+    //     userCodePk: 32,
+    //     userNickname: "하이하이",
+    //     userIntroduction: "안녕하시오."
+    // }
 
-    axios.post(
-        getApiUri(endpoint.userModify),
-        newUserInfo
-    ).then((response) => {
-        console.log(response);
-    }).catch((error) => {
-        console.log(error);
-    });
+    const uri = getApiUri(endpoint.userModify);
+    postRequest(uri, newUserInfo, responseCallback, errorCallback);
 }
-
-// export function 

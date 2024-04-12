@@ -144,9 +144,11 @@ onMounted(() => {
     api.healthCheck(
         function(response) {
             // success handler
+            console.log(response);
         },
         function(error) {
             // error handler
+            console.log(error);
         }
     );
 
