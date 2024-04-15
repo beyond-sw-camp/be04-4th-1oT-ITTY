@@ -35,30 +35,30 @@
                         
                             <div class="form-field">
                                 <label for="email">Email</label>
-                                <input type="text" id="email" />
+                                <input type="text" id="email" @input="onChangeSignUpInput" />
                             </div>
                             
                             <div class="form-field">
                                 <label for="password">Password</label>
-                                <input type="text" id="password" />
+                                <input type="password" id="password" @input="onChangeSignUpInput" />
                             </div>
                             
                             <div class="form-field">
                                 <label for="name">Name</label>
-                                <input type="text" id="name" />
+                                <input type="text" id="name" @input="onChangeSignUpInput" />
                             </div>
 
                             <div class="form-field">
-                                <label for="name">Nickname</label>
-                                <input type="text" id="nickname" />
+                                <label for="nickname">Nickname</label>
+                                <input type="text" id="nickname" @input="onChangeSignUpInput" />
                             </div>
 
                             <div class="form-field">
-                                <label for="name">Phone</label>
-                                <input type="text" id="phonenumber" />
+                                <label for="phoneNumber">Phone</label>
+                                <input type="text" id="phoneNumber" @input="onChangeSignUpInput" />
                             </div>
                                 
-                            <button class="btn-sign btn-up">Sign Up</button>
+                            <button type="button" class="btn-sign btn-up" @click="signUp">Sign Up</button>
                         </form>
                         <p>Have an account? <a href="#" @click.prevent="showSignIn">Sign In</a></p>
                     </div>
@@ -71,13 +71,13 @@
                     <h2>SIGN IN</h2>
                     <form class="form">
                         <div class="form-field">
-                            <label :style="{visibility: emailLabelVisibility}" for="email-in">Email</label>
-                            <input type="text" name="email_in" id="email-in" @input="onChangeEmailInput" />
+                            <label for="email-in">Email</label>
+                            <input type="text" name="email_in" id="email-in" @input="onChangeSignInInput" />
                         </div>
             
                         <div class="form-field">
-                            <label :style="{visibility: passwordLabelVisibility}" for="password-in">Password</label>
-                            <input type="password" name="password_in" id="password-in" @input="onChangePasswordInput" />
+                            <label for="password-in">Password</label>
+                            <input type="password" name="password_in" id="password-in" @input="onChangeSignInInput" />
                         </div>
             
                         <button type="button" class="btn-sign btn-in" @click="signIn">Sign In</button>
@@ -103,14 +103,11 @@
 
     const isSignUpVisible = ref(false);
     const isSignInVisible = ref(false);
-    
-    const emailLabelVisibility = ref('');
-    const passwordLabelVisibility = ref('');
-
-    const emailInputValue = ref('');
-    const passwordInputValue = ref('');
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    let signUpInputTextObj = {};
+    let signInInputTextObj = {};
 
     function showSignUp() {
         isSignUpVisible.value = true;
@@ -127,80 +124,145 @@
         isSignInVisible.value = false;
     }
 
-    function checkEmailValidation() {
-        if (emailInputValue.value.length == 0) {
+    function signUp() {
+        const email = signUpInputTextObj.email;
+        const password = signUpInputTextObj.password;
+        const name = signUpInputTextObj.name;
+        const nickname = signUpInputTextObj.nickname;
+        const phoneNumber = signUpInputTextObj.phoneNumber;
+
+
+        if (!email) {
             alert('이메일을 입력해 주세요.');
-            return false;
+            return;
         }
 
-        if (!emailRegex.test(emailInputValue.value)) {
-            alert('이메일 주소 형식이 올바르지 않습니다.');
-            return false;
-        }
-
-        return true;
-    }
-
-    function checkPasswordValidation() {
-        if (passwordInputValue.value.length == 0) {
+        if (!password) {
             alert('비밀번호를 입력해 주세요.');
             return;
         }
 
-        return true;
-    }
+        if (!name) {
+            alert('이름을 입력해 주세요.');
+            return;
+        }
 
-    function signIn() {        
-        if (checkEmailValidation() && checkPasswordValidation()) {
-            const userInfo = {
-                userEmail: emailInputValue.value,
-                userPassword: passwordInputValue.value
-            }
+        if (!nickname) {
+            alert('닉네임를 입력해 주세요.');
+            return;
+        }
 
-            api.login(
-                userInfo,
-                function(response) {
-                    if (response.status == 200) {
-                        const header = response.headers;
-                        const accessToken = header['access-token'];
-                        const refreshToken = header['refresh-token'];
-                        const userCode = header['user-code-pk'];
-                        const userEmail = header['user-email'];
+        if (!phoneNumber) {
+            alert('전화번호를 입력해 주세요.');
+            return;
+        }
 
-                        const loginInfo = {
-                            accessToken: accessToken,
-                            refreshToken: refreshToken,
-                            userCode: userCode,
-                            userEmail: userEmail
-                        }
+        if (!emailRegex.test(email)) {
+            alert('이메일 주소 형식이 올바르지 않습니다.');
+            return;
+        }
 
-                        window.localStorage.setItem('loginInfo', JSON.stringify(loginInfo));
+        const userInfo = {
+            userEmail: email,
+            userPassword: password,
+            userName: name,
+            userNickname: nickname,
+            userPhoneNumber: phoneNumber
+        }
 
-                        router.replace('/');
-                    }
-                },
-                function(error) {
-                    console.log(error);
-                    alert('로그인 실패');
+        api.regist(
+            userInfo,
+            (response) => {
+                signInInputTextObj['email'] = email;
+                signInInputTextObj['password'] = password;
+
+                signIn();
+            },
+            (error) => {
+                console.log(error);
+                
+                if (error.response.status == 409) {
+                    const errorMessage = error.response.data.message;
+                    console.log(errorMessage);
+                    alert(errorMessage);
+                } else {
+                    alert('회원가입 실패');
                 }
-            );
-        } 
+            }
+        );
     }
 
-    function onChangeEmailInput(e) {
-        emailInputValue.value = e.target.value;
+    function signIn() {
+        const email = signInInputTextObj.email;
+        const password = signInInputTextObj.password;
 
-        e.target.value.length > 0
-            ? emailLabelVisibility.value = 'hidden'
-            : emailLabelVisibility.value = '';
+        if (!email) {
+            alert('이메일을 입력해 주세요.');
+            return;
+        }
+
+        if (!password) {
+            alert('비밀번호를 입력해 주세요.');
+            return;
+        }
+
+        if (!emailRegex.test(email)) {
+            alert('이메일 주소 형식이 올바르지 않습니다.');
+            return;
+        }
+
+        const userInfo = {
+            userEmail: email,
+            userPassword: password
+        }
+
+        api.login(
+            userInfo,
+            function(response) {
+                if (response.status == 200) {
+                    const header = response.headers;
+                    const accessToken = header['access-token'];
+                    const refreshToken = header['refresh-token'];
+                    const userCode = header['user-code-pk'];
+                    const userEmail = header['user-email'];
+
+                    const loginInfo = {
+                        accessToken: accessToken,
+                        refreshToken: refreshToken,
+                        userCode: userCode,
+                        userEmail: userEmail
+                    }
+
+                    window.localStorage.setItem('loginInfo', JSON.stringify(loginInfo));
+
+                    router.replace('/');
+                }
+            },
+            function(error) {
+                console.log(error);
+                alert('로그인 실패');
+            }
+        );
     }
 
-    function onChangePasswordInput(e) {
-        passwordInputValue.value = e.target.value;
+    function onChangeSignInInput(e) {
+        const inputName = e.target.id.split('-')[0];
+        signInInputTextObj[inputName] = e.target.value;
+        console.log(signInInputTextObj);
+        onChangeInput(e);
+    }
 
+    function onChangeSignUpInput(e) {
+        signUpInputTextObj[e.target.id] = e.target.value;
+        console.log(signUpInputTextObj);
+        onChangeInput(e);
+
+    }
+
+    function onChangeInput(e) {
         e.target.value.length > 0
-            ? passwordLabelVisibility.value = 'hidden'
-            : passwordLabelVisibility.value = '';
+            ? e.target.previousSibling.style.visibility = 'hidden'
+            : e.target.previousSibling.style.visibility = ''
     }
 </script>
 

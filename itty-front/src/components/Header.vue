@@ -115,7 +115,7 @@
     @import './main-content/css/main.css';
 
     .profile {
-        width: 40px;
-        height: 40px;
+        width: 40px !important;
+        height: 40px !important;
     }
 </style>
