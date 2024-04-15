@@ -5,18 +5,14 @@
       <form @submit.prevent="submitPost">
         <div>
           <label for="title">제목:</label>
-          <input type="text" id="title" v-model="postForm.title">
+          <input type="text" id="title" v-model="postForm.articleTitle">
         </div>
         <div>
           <label for="content">내용:</label>
-          <textarea id="content" v-model="postForm.content"></textarea>
-        </div>
-        <div>
-          <label for="photos">사진 등록:</label>
-          <input type="file" id="photos" @change="handleFileUpload" multiple>
+          <textarea id="content" v-model="postForm.articleContent"></textarea>
         </div>
         
-        <button type="submit" @click="testPost">게시글 작성</button>
+        <button type="submit">게시글 작성</button>
       </form>
     </div>
 
@@ -30,25 +26,29 @@ import MainFooter from '@/components/Footer.vue';
 
 import { reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
-
+import * as api from '@/api/api.js';
 
   const postForm = reactive({
-    title: '',
-    content: '',
-    photos: [],
+    userCodeFk: '1',
+    articleTitle: '',
+    articleContent: '',
   });
   
   const router = useRouter();
   
-  
-  function handleFileUpload(event) {
-    postForm.photos = Array.from(event.target.files);
+  async function submitPost() {
+  console.log('게시글 데이터:', postForm);
+
+  try {
+    const response = await api.article(postForm); // JSON 객체를 전달
+    alert('게시글이 성공적으로 등록되었습니다.');
+    console.log(response);
+    router.push('/free-board'); // 게시글 목록 페이지로 리다이렉션
+  } catch (error) {
+    console.error('게시글 등록에 실패했습니다:', error);
+    alert('게시글 등록에 실패했습니다.');
   }
-  
-  function submitPost() {
-    console.log('게시글 데이터:', postForm);
-    // 게시글 데이터를 서버에 전송하거나 저장하는 로직을 여기에 추가
-  }
+}
   
   function testPost () {
     alert('게시글이 등록되었습니다.');
