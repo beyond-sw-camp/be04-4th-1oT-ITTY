@@ -71,7 +71,7 @@ public class WebSecurityConfig {
 			public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
 
 				List<String> allowStringList = Collections.singletonList("*");
-				List<String> exposedHeaders = List.of("Access-Token", CORS_EXPOSED_HEADER);
+				// List<String> exposedHeaders = List.of("Access-Token", CORS_EXPOSED_HEADER);
 				CorsConfiguration configuration = new CorsConfiguration();
 
 				configuration.setAllowedOriginPatterns(allowStringList);
@@ -79,7 +79,7 @@ public class WebSecurityConfig {
 				configuration.setAllowedHeaders(allowStringList);
 				configuration.setAllowCredentials(true);
 				configuration.setMaxAge(3600L);
-				configuration.setExposedHeaders(exposedHeaders);
+				// configuration.setExposedHeaders(exposedHeaders);
 
 				return configuration;
 			}
