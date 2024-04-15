@@ -66,24 +66,23 @@ public class WebSecurityConfig {
 		AuthenticationManager authenticationManager = authenticationManagerBuilder.build();
 
 		// cors 설정
-		http.cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.configurationSource(new CorsConfigurationSource() {
-			@Override
-			public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
+		http.cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.configurationSource(request -> {
+            List<String> allowStringList = Collections.singletonList("*");
+			List<String> exposeHeaderList = List.of(
+					"Access-Token", "User-Code-Pk", "User-Email", "Refresh-Token"
+			);
 
-				List<String> allowStringList = Collections.singletonList("*");
-				List<String> exposedHeaders = List.of("Access-Token", CORS_EXPOSED_HEADER);
-				CorsConfiguration configuration = new CorsConfiguration();
+            CorsConfiguration configuration = new CorsConfiguration();
 
-				configuration.setAllowedOriginPatterns(allowStringList);
-				configuration.setAllowedMethods(allowStringList);
-				configuration.setAllowedHeaders(allowStringList);
-				configuration.setAllowCredentials(true);
-				configuration.setMaxAge(3600L);
-				configuration.setExposedHeaders(exposedHeaders);
+            configuration.setAllowedOriginPatterns(allowStringList);
+            configuration.setAllowedMethods(allowStringList);
+            configuration.setAllowedHeaders(allowStringList);
+            configuration.setExposedHeaders(exposeHeaderList);
+            configuration.setAllowCredentials(true);
+            configuration.setMaxAge(3600L);
 
-				return configuration;
-			}
-		}));
+            return configuration;
+        }));
 
 		// csrf disable
 		/* jwt 토큰을 사용하면 세션을 stateless 상태로 관리하기 때문에 csrf를 disable 상태로 설정한다. */
