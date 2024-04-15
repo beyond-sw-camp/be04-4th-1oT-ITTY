@@ -12,7 +12,7 @@
       <p>{{ article.articleContent }}</p>
       </div>
       <div margin-left="43%">
-      <button @click="likeArticle">좋아요 {{ article.likes }}</button>
+     <button :class="{ liked: article.likedByUser, unliked: !article.likedByUser }" @click="likeArticle">좋아요 {{ article.likes }}</button>
       </div>
       <hr>
       <h2>댓글</h2>
@@ -43,32 +43,59 @@ import * as api from '@/api/api.js';
 
 const article = ref('');
 const comments = ref([]);
+const likedArticlesResponse = ref();
 const newComment = ref('');
 const route = useRoute();
 
 onMounted(async () => {
   try {
     const articleCodePk = route.params.id;
-    const response = await api.fetchArticleById(articleCodePk);
-  
-    console.log("API Response:", response);
-    if (response) {
-      article.value = response;
-      
-      comments.value = response.replyDTOList || [];
-      
+    const userCode = 1; // 사용자 코드 설정
+
+    const articleResponse = await api.fetchArticleById(articleCodePk);
+    if (articleResponse && articleResponse.articleTitle) {
+      article.value = {...article.value, ...articleResponse};
+    } else {
+      console.error('Invalid article data:', articleResponse);
+    }
+
+    const likedArticlesResponse = await api.fetchArticlesLikedByUser(userCode);
+    console.log("맞냐?" + likedArticlesResponse.likedArticleDTOList[0].articleCodePk);
+    if (Array.isArray(likedArticlesResponse.likedArticleDTOList)) {
+      const isLiked = likedArticlesResponse.likedArticleDTOList.some(a => a.articleCodePk === articleCodePk);
+    
+      console.log("화깅ㄴ" + isLiked)
+      article.value.likedByUser = isLiked;
+    } else {
+      console.error('계속 생기는 오류 Invalid liked articles data:', likedArticlesResponse);
     }
   } catch (error) {
-    console.error('Failed to fetch article:', error);
+    console.error('Failed to fetch data:', error);
   }
 });
 
-const likeArticle = () => {
-  if (!article.value.likes) {
-    article.value.likes = 0;
+const likeArticle = async () => {
+  if (article.value) {
+    const userCode = 1;  // 실제 로그인된 사용자 ID로 변경 필요
+    try {
+      console.log(article.value.likedByUser)
+      if (article.value.likedByUser) {
+        const response = await api.deleteArticleLike(article.value.articleCodePk, userCode);
+        if (response && response.message.includes('successfully')) {
+          article.value.likedByUser = false;
+          article.value.likes--;
+        }
+      } else {
+        const response = await api.addArticleLike(article.value.articleCodePk, userCode);
+        if (response && response.message.includes('successfully')) {
+          article.value.likedByUser = true;
+          article.value.likes++;
+        }
+      }
+    } catch (error) {
+      console.error('Failed to toggle like:', error);
+    }
   }
-  article.value.likes++;
-  // 서버에 좋아요 상태 업데이트를 요청하는 API 호출을 추가할 수 있습니다.
 };
 
 const likeComment = (comment) => {
@@ -219,6 +246,14 @@ button:hover {
   display: flex;
   margin-right: 0; /* Right align the author name */
   justify-content: flex-end;
+}
+
+.liked {
+  background-color: #ff6347; 
+}
+
+.unliked {
+  background-color: #4c606d;
 }
 
 </style>

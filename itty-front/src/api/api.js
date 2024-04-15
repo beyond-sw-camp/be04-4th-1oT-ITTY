@@ -105,3 +105,37 @@ export function addCommentAPI(commentData) {
             throw error;
         });
 }
+
+export function addArticleLike(articleCode, userCode) {
+    const uri = `http://localhost:30001/article/bulletin/like`;
+    const data = {
+        articleCode: articleCode,
+        userCode: userCode
+    };
+    return axios.post(uri, data)
+        .then(response => response.data)
+        .catch(error => {
+            console.error('Error adding article like:', error);
+            throw error;
+        });
+}
+
+export function deleteArticleLike(articleCode, userCode) {
+    const uri = `http://localhost:30001/article/bulletin/like`;
+    return axios.delete(uri, { data: { articleCode, userCode } })
+        .then(response => response.data)
+        .catch(error => {
+            console.error('Error deleting article like:', error);
+            throw error;
+        });
+}
+
+export function fetchArticlesLikedByUser(userCode) {
+    const uri = `http://localhost:30001/user/${userCode}`;
+    return axios.get(uri)
+        .then(response => response.data)
+        .catch(error => {
+            console.error('Error fetching liked articles:', error);
+            throw error;
+        });
+}
