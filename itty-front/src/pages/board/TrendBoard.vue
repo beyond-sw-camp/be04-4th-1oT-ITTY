@@ -57,39 +57,21 @@
                                 <div class="tab-content" id="nav-tabContent">
                                     <div class="tab-pane fade show active" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
                                         <div class="product-grid row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5" style="display: flex; flex-wrap:wrap;">
-                                            <div class="col">
-                                                <div class="product-item">
-                                                    <span class="badge bg-success position-absolute m-1">해시태그</span>
-                                                    <a href="#" class="btn-wishlist"><svg width="24" height="24"><use xlink:href="#heart"></use></svg></a>
-                                                    <figure>
-                                                        <a href="single-product.html" title="Product Title"><img src="@/components/main-content/img/logo-team.png"  class="tab-image"></a>
-                                                    </figure>
-                                                    <h3>IT이슈 1</h3>
-                                                    <span class="qty">앞의 첫째 줄 둘째줄 정도까지</span>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="product-item">
-                                                    <span class="badge bg-success position-absolute m-1">해시태그</span>
-                                                    <a href="#" class="btn-wishlist"><svg width="24" height="24"><use xlink:href="#heart"></use></svg></a>
-                                                    <figure>
-                                                    <a href="single-product.html" title="Product Title"><img src="@/components/main-content/img/logo-team.png"  class="tab-image"></a>
-                                                    </figure>
-                                                    <h3>IT이슈 1</h3>
-                                                    <span class="qty">앞의 첫째 줄 둘째줄 정도까지</span>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="product-item">
-                                                    <span class="badge bg-success position-absolute m-1">해시태그</span>
-                                                    <a href="#" class="btn-wishlist"><svg width="24" height="24"><use xlink:href="#heart"></use></svg></a>
-                                                    <figure>
-                                                        <a href="single-product.html" title="Product Title"><img src="@/components/main-content/img/logo-team.png"  class="tab-image"></a>
-                                                    </figure>
-                                                    <h3>IT이슈 1</h3>
-                                                    <span class="qty">앞의 첫째 줄 둘째줄 정도까지</span>
-                                                </div>
-                                            </div>
+                                
+                                            <div v-for="(article, index) in articles" :key="index" class="col">
+    <div class="product-item">
+        <span class="badge bg-success position-absolute m-1">{{ article.trendArticleCategory }}</span>
+        <figure>
+            <a href="single-product.html" title="Product Title">
+                <a :href="article.trendArticleUrl" title="Product Title">
+                   <img :src="article.trendArticleImageUrl" class="tab-image">
+                </a>
+            </a>
+        </figure>
+        <h3>{{ article.trendArticleTitle }}</h3>
+        <span class="qty">{{ truncateText(article.trendArticleContent, 30) }}</span>
+    </div>
+</div>
                                         </div>
                                     </div>
                                 </div>             
@@ -200,8 +182,30 @@
 </template>
 
 <script setup>
-    import MainHeader from '@/components/Header.vue';
-    import MainFooter from '@/components/Footer.vue';
+import MainHeader from '@/components/Header.vue';
+import MainFooter from '@/components/Footer.vue';
+
+import { onMounted, ref } from 'vue';
+import * as api from '@/api/api.js';
+import { fetchAllTrendArticles } from '@/api/api'; // 경로 확인 필요
+
+const articles = ref([]);
+
+onMounted(async () => {
+    try {
+        console.log("트렌드 게시글을 불러오는 중...");
+        const fetchedArticles = await fetchAllTrendArticles();
+        articles.value = fetchedArticles;
+        console.log("불러온 트렌드 게시글:", articles.value);
+    } catch (error) {
+        console.error('트렌드 게시글 불러오기 에러:', error);
+    }
+});
+
+function truncateText(text, length) {
+  if (text.length <= length) return text;
+  return text.substring(0, length) + '...';
+}
 </script>
 
 <style scoped>
