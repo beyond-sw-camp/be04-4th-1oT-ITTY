@@ -7,7 +7,7 @@
                     <li class="dropdown">
                         <a href="#"><span>Home</span><i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
-                            <li><a href="#" class="active">공지사항</a></li>
+                            <li><a href="#">공지사항</a></li>
                             <li><a href="#">FAQ</a></li>
                             <li><a href="#">1oT</a></li>
                             <li><a @click="navigateToEvent">EVENT</a></li>
@@ -15,7 +15,7 @@
                     </li>
                     <li><a class="nav-link scrollto" href="#about">Guide</a></li>
                     <li><a class="nav-link scrollto" href="#services">Services</a></li>
-                    <li class="dropdown"><a href="#"><span>게시판</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                    <li class="dropdown"><a><span>게시판</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
                             <li class="dropdown"><a><span>트렌드 게시판</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                                 <ul>
@@ -90,7 +90,10 @@
     }
 
     function logout() {
-        isBeforeLogin.value = true;
+        if (confirm('로그아웃 하시겠습니까?')) {
+            window.localStorage.removeItem('loginInfo');
+            isBeforeLogin.value = true;
+        }
     }
 
     onMounted(() => {
@@ -104,8 +107,7 @@
             });
         }
 
-        const accessToken = 'accessToken';
-        isBeforeLogin.value = !accessToken;
+        isBeforeLogin.value = !window.localStorage.getItem('loginInfo');
     });
 </script>
 
@@ -113,7 +115,7 @@
     @import './main-content/css/main.css';
 
     .profile {
-        width: 40px;
-        height: 40px;
+        width: 40px !important;
+        height: 40px !important;
     }
 </style>

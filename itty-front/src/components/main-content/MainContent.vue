@@ -140,18 +140,6 @@
 */
 
 onMounted(() => {
-    // API 호출 예시
-    api.healthCheck(
-        function(response) {
-            // success handler
-            console.log(response);
-        },
-        function(error) {
-            // error handler
-            console.log(error);
-        }
-    );
-
     /**
      * Navbar links active state on scroll
      */
