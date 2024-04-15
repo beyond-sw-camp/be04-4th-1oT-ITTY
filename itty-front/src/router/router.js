@@ -12,7 +12,7 @@ import UserHistory from '@/components/mypage-content/UserHistory.vue';
 import UserQnA from '@/components/mypage-content/UserQnA.vue';
 import ModifyUserInfo from '@/components/mypage-content/ModifyUserInfo.vue';
 import UserSignout from '@/components/mypage-content/UserSignout.vue';
-import SelectArticle from '@/pages/board/SelectArticle.vue';
+import ArticleView from '@/pages/board/ArticleView.vue';
 
 
 const router = createRouter({
@@ -76,8 +76,14 @@ const router = createRouter({
         },
         {
             path: '/newArticle/',
-            component: SelectArticle
-        }
+            component: ArticleView
+        },
+        {
+            path: '/article/:id', 
+            name: 'article',
+            component: ArticleView,
+            props: true 
+          },
     ]
  
 });

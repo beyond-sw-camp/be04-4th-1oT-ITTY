@@ -16,10 +16,10 @@
       </thead>
       <tbody>
         <tr v-for="post in posts" :key="post.id">
-          <td>{{ post.date }}</td>
-          <td>{{ post.title }}</td>
-          <td>{{ post.author }}</td>
-          <td>{{ post.views }}</td>
+          <td>{{ formatDate(post.articleCreatedDate) }}</td>
+          <td><router-link :to="{ name: 'article', params: { id: post.articleCodePk }}">{{ post.articleTitle }}</router-link></td>
+          <td>{{ post.userCodeFk }}</td>
+          <td>{{ post.articleViewCount }}</td>
         </tr>
       </tbody>
     </table>
@@ -46,18 +46,25 @@
   import MainHeader from '@/components/Header.vue';
   import MainFooter from '@/components/Footer.vue';
 
+  import * as api from '@/api/api.js';
   import { useRouter } from "vue-router";
 
-  import { ref } from 'vue';
+  import { ref, onMounted } from 'vue';
+
+  const posts = ref([]);
+
+onMounted(async () => {
+  try {
+    const response = await api.fetchAllArticles();
+    console.log(response.data);
+    posts.value = response.data.sort((a, b) => new Date(b.articleCreatedDate) - new Date(a.articleCreatedDate));
+    posts.value = response.data; // 서버로부터 받은 게시글 데이터 저장
+  } catch (error) {
+    console.error('Failed to fetch articles:', error);
+  }
+});
 
   const router = useRouter();
-
-  const posts = ref([
-    // 예시 게시글 데이터
-    { id: 1, title: '게시글 제목 1', author: '작성자1', date: '2024-01-01', views: 100 },
-    { id: 2, title: '게시글 제목 2', author: '작성자2', date: '2024-01-02', views: 150 },
-    // 추가 게시글 데이터...
-  ]);
 
   const searchQuery = ref('');
 
@@ -70,6 +77,11 @@
   };
 
   const searchOption = ref('title'); // 기본 검색 옵션
+
+  const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  return `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+};
 
   </script>
   
@@ -112,6 +124,16 @@ button {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.router-link-style, .board-table a {
+  text-decoration: none; /* 밑줄 제거 */
+  color: inherit; /* 텍스트 색상을 상속받아 일반 텍스트와 동일하게 설정 */
+}
+
+.router-link-style:hover, .board-table a:hover {
+  text-decoration: underline; /* 호버 시 밑줄 추가 */
+  color: #34495e; /* 호버 시 색상 변경, 필요에 따라 조정 */
 }
 
 /* 전체 폰트 설정을 좀 더 세련된 것으로 변경 */
