@@ -76,6 +76,7 @@ public class ArticleController {
 		}
 
 		return ResponseEntity.status(HttpStatus.OK).body(responseArticleList);
+
 	}
 
 	/* 게시글코드(article_code_pk) 로 자유게시판 게시글 한개 조회 */
