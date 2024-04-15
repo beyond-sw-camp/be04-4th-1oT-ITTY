@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUri = 'http://localhost:8888/';
+const baseUri = 'http://localhost:30001/';
 const endpoint = {
     // login
     healthCheck: 'health_check',
@@ -8,7 +8,8 @@ const endpoint = {
 
     // user
     user: 'user/',
-    userModify: 'user/modify'
+    userModify: 'user/modify',
+
 }
 
 function getApiUri(apiEndpoint) {
@@ -61,4 +62,14 @@ export function modifyUserInfo(newUserInfo, responseCallback, errorCallback) {
 
     const uri = getApiUri(endpoint.userModify);
     postRequest(uri, newUserInfo, responseCallback, errorCallback);
+}
+
+export function getFollowers(userCode, responseCallback, errorCallback) {
+    const uri = getApiUri(`follow/${userCode}/followers`);
+    getRequest(uri, responseCallback, errorCallback);
+}
+
+export function getFollowings(userCode, responseCallback, errorCallback) {
+    const uri = getApiUri(`follow/${userCode}/followings`);
+    getRequest(uri, responseCallback, errorCallback);
 }
