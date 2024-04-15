@@ -1,5 +1,8 @@
 package org.iot.itty.login.security;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.iot.itty.login.jwt.JwtFilter;
 import org.iot.itty.login.jwt.JwtUtil;
 import org.iot.itty.login.redis.TokenRepository;
@@ -18,6 +21,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Configuration
 @EnableWebSecurity
@@ -58,6 +65,26 @@ public class WebSecurityConfig {
 
 		AuthenticationManager authenticationManager = authenticationManagerBuilder.build();
 
+		// cors 설정
+		http.cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.configurationSource(new CorsConfigurationSource() {
+			@Override
+			public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
+
+				List<String> allowStringList = Collections.singletonList("*");
+				List<String> exposedHeaders = List.of("Access-Token", CORS_EXPOSED_HEADER);
+				CorsConfiguration configuration = new CorsConfiguration();
+
+				configuration.setAllowedOriginPatterns(allowStringList);
+				configuration.setAllowedMethods(allowStringList);
+				configuration.setAllowedHeaders(allowStringList);
+				configuration.setAllowCredentials(true);
+				configuration.setMaxAge(3600L);
+				configuration.setExposedHeaders(exposedHeaders);
+
+				return configuration;
+			}
+		}));
+
 		// csrf disable
 		/* jwt 토큰을 사용하면 세션을 stateless 상태로 관리하기 때문에 csrf를 disable 상태로 설정한다. */
 		http.csrf((auth) -> auth.disable());
@@ -97,13 +124,13 @@ public class WebSecurityConfig {
 				.permitAll()
 		);
 
+
 		// 받아온 매개변수 http를 build 타입으로 반환
 		return http.build();
 	}
 
 	private AuthenticationFilter getAuthenticationFilter(AuthenticationManager authenticationManager) {
 		return new AuthenticationFilter(authenticationManager, loginService, environment, jwtUtil, accessTokenExpTime,
-			refreshTokenExpTime,
-			tokenRepository, redisTemplate);
+			refreshTokenExpTime, tokenRepository, redisTemplate);
 	}
 }
