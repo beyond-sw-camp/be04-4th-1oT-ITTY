@@ -171,3 +171,12 @@ export function fetchArticlesLikedByUser(userCode) {
             throw error;
         });
 }
+
+export function fetchAllTrendArticles() {
+    return axios.get(`http://localhost:30001/article/trend`)
+        .then(response => response.data)  // 서버에서 받은 데이터를 반환
+        .catch(error => {
+            console.error('Failed to fetch trend articles:', error);
+            throw error;  // 오류를 재발생시켜 호출 측에서 처리할 수 있도록 함
+        });
+}

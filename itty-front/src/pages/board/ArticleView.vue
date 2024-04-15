@@ -12,7 +12,7 @@
       <p>{{ article.articleContent }}</p>
       </div>
       <div margin-left="43%">
-     <button :class="{ liked: article.likedByUser, unliked: !article.likedByUser }" @click="likeArticle">좋아요 {{ article.likes }}</button>
+     <button type="button" :class="{ liked: article.likedByUser, unliked: !article.likedByUser }" @click="likeArticle">좋아요 {{ article.likes }}</button>
       </div>
       <hr>
       <h2>댓글</h2>
@@ -40,6 +40,7 @@ import MainFooter from '@/components/Footer.vue';
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import * as api from '@/api/api.js';
+
 
 const article = ref('');
 const comments = ref([]);
@@ -75,6 +76,7 @@ onMounted(async () => {
 });
 
 const likeArticle = async () => {
+  console.log(article.value);
   if (article.value) {
     const userCode = 1;  // 실제 로그인된 사용자 ID로 변경 필요
     try {
