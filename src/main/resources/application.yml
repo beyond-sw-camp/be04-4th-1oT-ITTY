@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3307/itty
+    url: jdbc:mariadb://localhost:3306/itty
     username: root
     password: mariadb
   jpa:
