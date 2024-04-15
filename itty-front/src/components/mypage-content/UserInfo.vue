@@ -3,25 +3,45 @@
       <br>
       <div class="user-detail">
         <label>이름:  </label>
-        <span>{{ userInfo.name }}</span>
+        <span>{{ userInfo.userName }}</span>
       </div>
       <br>
+      <br>
+      <div class="user-detail">
+        <label>Email:  </label>
+        <span>{{ userInfo.userEmail }}</span>
+      </div>
       <br>
       <br>
       <div class="user-detail">
         <label>전화번호:  </label>
-        <span>{{ userInfo.phoneNumber }}</span>
+        <span>{{ userInfo.userPhoneNumber }}</span>
       </div>
     </div>
   </template>
   
   <script setup>
-  import { ref } from 'vue';
+  import { ref, onMounted } from 'vue';
   
-  const userInfo = ref({
-    name: '테스트 사람',
-    phoneNumber: '010-1234-5678'
-  });
+  import * as api from '@/api/api.js';
+
+  onMounted(() => {
+    api.findUserByUserCode(
+      1,
+      function(response) {
+        /*
+        console.log(response);
+        */
+        userInfo.value = response.data;
+      },
+      function(error) {
+        console.log(error);
+      }
+    )
+  })
+
+  const userInfo = ref({});
+  
   </script>
   
   <style scoped>
