@@ -43,9 +43,9 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 	private final RedisTemplate<String, String> redisTemplate;
 
 	public AuthenticationFilter(AuthenticationManager authenticationManager,
-								LoginService loginService,
-								Environment environment,
-								JwtUtil jwtUtil,
+		LoginService loginService,
+		Environment environment,
+		JwtUtil jwtUtil,
 		@Value("${token.expiration_time}") long accessTokenExpTime,
 		@Value("${spring.data.redis.expiration_time}") long refreshTokenExpTime,
 		TokenRepository tokenRepository,
@@ -85,9 +85,9 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 	/* 사용자 인증 성공(로그인 시 입력한 정보가 DB와 일치) 시 토큰 생성 */
 	@Override
 	protected void successfulAuthentication(HttpServletRequest request,
-											HttpServletResponse response,
-											FilterChain chain,
-											Authentication authResult) throws IOException, ServletException {
+		HttpServletResponse response,
+		FilterChain chain,
+		Authentication authResult) throws IOException, ServletException {
 
 		String userName = ((User)authResult.getPrincipal()).getUsername();	// 로그인한 유저의 아이디(이메일) 저장
 		log.info("userName: " + userName);
