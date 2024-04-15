@@ -4,7 +4,7 @@
         <div id="content">
             <div class="inner">
                 <!-- Post -->
-                <article class="box post post-excerpt">                    
+                <article class="box post post-excerpt">
                     <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -120,10 +120,11 @@
                 <nav id="nav">
                     <ul>
                         <li class="current"><a href="#">전체</a></li>
-                        <li><a href="#">백엔드</a></li>
-                        <li><a href="#">프론트엔드</a></li>
-                        <li><a href="#">데브옵스</a></li>
-                        <li><a href="#">AI</a></li>
+                        <li><a href="#">IT기업</a></li>
+                        <li><a href="#">IT·과학</a></li>
+                        <li><a href="#">포털/플랫폼</a></li>
+                        <li><a href="#">디지털마케팅</a></li>
+                        <li><a href="#">보안/해킹</a></li>
                     </ul>
                 </nav>
                 <!-- Search -->
@@ -201,16 +202,6 @@
 <script setup>
     import MainHeader from '@/components/Header.vue';
     import MainFooter from '@/components/Footer.vue';
-
-    import {ref, onBeforeMount , onMounted} from 'vue';
-
-    onMounted(() => {
-        const preloader = document.querySelector('#preloader');
-        console.log(preloader);
-        if (preloader) {
-            preloader.remove();
-        }
-    });
 </script>
 
 <style scoped>
@@ -309,7 +300,7 @@ tfoot, thead, tr, th, td, article, aside,
 canvas, details, embed, figure, figcaption,
 footer, header, hgroup, menu, nav, output, ruby,
 section, summary, time, mark, audio, video {
-	margin: 0;
+    margin: 0;
 	padding: 0;
 	border: 0;
 	font-size: 100%;
@@ -319,7 +310,8 @@ section, summary, time, mark, audio, video {
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav {
-	display: block;}
+	display: block;
+}
 
 section {
 	display: block;
@@ -613,7 +605,7 @@ strong, b {
 }
 
 h2, h3, h4, h5, h6 {
-    font-family: 'Open Sans Condensed', sans-serif;
+    /* font-family: 'Open Sans Condensed', sans-serif; */
     font-weight: 700;
     color: #232323;
 }
@@ -667,7 +659,7 @@ table {
 }
 
 table tbody tr:nth-child(2n+2) {
-    background: #f4f4f4;
+    background: #ffffff;
 }
 
 table td {
@@ -1225,7 +1217,7 @@ ol li {
     color: #fff;
     line-height: 44px;
     font-size: 1.25em;
-    font-family: 'Open Sans Condensed', sans-serif;
+    /* font-family: 'Open Sans Condensed', sans-serif; */
     font-weight: 700;
     letter-spacing: 0.1em;
     text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.5);
@@ -1466,13 +1458,13 @@ ol li {
     }
 
     .box.post .info .stats li:hover a {
-        background-color: #f4f4f4;
+        background-color: #ffffff;
         opacity: 1.0;
     }
 
     /* Logo */
     #logo {
-        font-family: 'Open Sans Condensed', sans-serif;
+        /* font-family: 'Open Sans Condensed', sans-serif; */
         font-weight: 700;
         font-size: 2em;
         letter-spacing: 0.1em;
@@ -1952,11 +1944,6 @@ ol li {
         z-index: 10;
     }
 
-    /* Declare heights because of positioning of img element */
-    .carousel-item {
-        height: 32rem;
-    }
-
     carousel-control-next, .carousel-control-prev {
         position: absolute;
         top: 0;
@@ -1996,6 +1983,12 @@ ol li {
             margin-top: 7rem;
         }
     }
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+    height: 20rem;
+    margin-right: -100%;
 }
 
 </style>

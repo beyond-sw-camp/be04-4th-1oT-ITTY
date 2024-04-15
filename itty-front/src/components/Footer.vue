@@ -43,7 +43,17 @@
 </template>
 
 <script setup>
-
+    import {ref, onMounted} from 'vue';
+    
+    onMounted(() => {
+        /**
+        * Preloader
+        */
+        const preloader = document.querySelector('#preloader');
+        if (preloader) {
+            preloader.remove();
+        }
+    });
 </script>
 
 <style scoped>

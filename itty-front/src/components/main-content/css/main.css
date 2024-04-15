@@ -214,7 +214,6 @@ section {
 
 .sejongBold {
   font-family: 'SejonghospitalBold';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SejonghospitalBold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
 }
@@ -227,7 +226,7 @@ section {
 
 .header {
   padding: 15px 0;
-  transition: all 0.5s;
+  transition: all 0.2s;
   z-index: 997;
 }
 
@@ -1131,7 +1130,7 @@ section {
   inset: -60px 0 0 -60px;
   z-index: -1;
   content: "";
-  background: url("../img/about-bg.png") top left;
+  background: url("@/components/main-content/img/about-bg.png") top left;
   background-repeat: no-repeat;
 }
 

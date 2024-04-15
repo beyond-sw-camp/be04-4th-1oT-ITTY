@@ -48,7 +48,7 @@
   --color-primary-light: #657a94;
   --color-primary-dark: #262c33;
 
-  --color-primary-rgb: 14, 162, 189;
+  --color-primary-rgb: 109, 129, 152;
   --color-primary-light-rgb: 30, 195, 224;
   --color-primary-dark-rgb: 1, 137, 161;
 
@@ -130,8 +130,8 @@
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
-  --bs-primary: var(--color-blue);
-  --bs-secondary: var(--color-blue);
+  --bs-primary: var(--color-black);
+  --bs-secondary: var(--color-black);
   --bs-success: #198754;
   --bs-info: #0dcaf0;
   --bs-warning: #ffc107;
