@@ -235,7 +235,7 @@ body {
   top: 25px;
   left: 5px;
   cursor: text;
-  transition: all 0.2s ease-in-out 0.1s;
+  /* transition: all 0.2s ease-in-out 0.1s; */
   color: rgba(116, 116, 116, 0.44);
   user-select: none;
 }

@@ -71,16 +71,16 @@
                     <h2>SIGN IN</h2>
                     <form class="form">
                         <div class="form-field">
-                            <label for="email-in">Email</label>
-                            <input type="text" name="email_in" id="email-in" />
+                            <label :style="{visibility: emailLabelVisibility}" for="email-in">Email</label>
+                            <input type="text" name="email_in" id="email-in" @input="onChangeEmailInput" />
                         </div>
             
                         <div class="form-field">
-                            <label for="password-in">Password</label>
-                            <input type="text" name="password_in" id="password-in" />
+                            <label :style="{visibility: passwordLabelVisibility}" for="password-in">Password</label>
+                            <input type="password" name="password_in" id="password-in" @input="onChangePasswordInput" />
                         </div>
             
-                        <button class="btn-sign btn-in" @click="signIn">Sign In</button>
+                        <button type="button" class="btn-sign btn-in" @click="signIn">Sign In</button>
                     </form>
                     <p>Have an account? <a href="#" @click.prevent="showSignUp">Sign Up</a></p>
                 </div>
@@ -95,11 +95,22 @@
 
 <script setup>
 
-    import { ref, onMounted } from 'vue';
+    import { ref } from 'vue';
     import { useRouter } from 'vue-router';
+    import * as api from '@/api/api.js';
+
+    const router = useRouter();
 
     const isSignUpVisible = ref(false);
     const isSignInVisible = ref(false);
+    
+    const emailLabelVisibility = ref('');
+    const passwordLabelVisibility = ref('');
+
+    const emailInputValue = ref('');
+    const passwordInputValue = ref('');
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     function showSignUp() {
         isSignUpVisible.value = true;
@@ -114,6 +125,82 @@
     function showHome() {
         isSignUpVisible.value = false;
         isSignInVisible.value = false;
+    }
+
+    function checkEmailValidation() {
+        if (emailInputValue.value.length == 0) {
+            alert('이메일을 입력해 주세요.');
+            return false;
+        }
+
+        if (!emailRegex.test(emailInputValue.value)) {
+            alert('이메일 주소 형식이 올바르지 않습니다.');
+            return false;
+        }
+
+        return true;
+    }
+
+    function checkPasswordValidation() {
+        if (passwordInputValue.value.length == 0) {
+            alert('비밀번호를 입력해 주세요.');
+            return;
+        }
+
+        return true;
+    }
+
+    function signIn() {        
+        if (checkEmailValidation() && checkPasswordValidation()) {
+            const userInfo = {
+                userEmail: emailInputValue.value,
+                userPassword: passwordInputValue.value
+            }
+
+            api.login(
+                userInfo,
+                function(response) {
+                    if (response.status == 200) {
+                        const header = response.headers;
+                        const accessToken = header['access-token'];
+                        const refreshToken = header['refresh-token'];
+                        const userCode = header['user-code-pk'];
+                        const userEmail = header['user-email'];
+
+                        const loginInfo = {
+                            accessToken: accessToken,
+                            refreshToken: refreshToken,
+                            userCode: userCode,
+                            userEmail: userEmail
+                        }
+
+                        window.localStorage.setItem('loginInfo', JSON.stringify(loginInfo));
+
+                        router.replace('/');
+                    }
+                },
+                function(error) {
+                    console.log(error);
+                    alert('로그인 실패');
+                }
+            );
+        } 
+    }
+
+    function onChangeEmailInput(e) {
+        emailInputValue.value = e.target.value;
+
+        e.target.value.length > 0
+            ? emailLabelVisibility.value = 'hidden'
+            : emailLabelVisibility.value = '';
+    }
+
+    function onChangePasswordInput(e) {
+        passwordInputValue.value = e.target.value;
+
+        e.target.value.length > 0
+            ? passwordLabelVisibility.value = 'hidden'
+            : passwordLabelVisibility.value = '';
     }
 </script>
 

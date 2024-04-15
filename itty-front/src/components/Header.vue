@@ -90,7 +90,10 @@
     }
 
     function logout() {
-        isBeforeLogin.value = true;
+        if (confirm('로그아웃 하시겠습니까?')) {
+            window.localStorage.removeItem('loginInfo');
+            isBeforeLogin.value = true;
+        }
     }
 
     onMounted(() => {
@@ -104,8 +107,7 @@
             });
         }
 
-        const accessToken = 'accessToken';
-        isBeforeLogin.value = !accessToken;
+        isBeforeLogin.value = !window.localStorage.getItem('loginInfo');
     });
 </script>
 
