@@ -26,10 +26,13 @@ import MainFooter from '@/components/Footer.vue';
 
 import { reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
+
 import * as api from '@/api/api.js';
 
+const loginInfo = JSON.parse(window.localStorage.getItem('loginInfo'));
+
   const postForm = reactive({
-    userCodeFk: '1',
+    userCodeFk: loginInfo.userCode,
     articleTitle: '',
     articleContent: '',
   });
