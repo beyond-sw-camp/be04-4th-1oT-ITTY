@@ -20,7 +20,8 @@ const endpoint = {
 
     // article
     article: 'article/bulletin',
-    reply: 'reply'
+    reply: 'reply',
+
 }
 
 function getApiUri(apiEndpoint) {
@@ -32,7 +33,13 @@ function sendGetRequest(apiUri, responseCallback, errorCallback) {
 }
 
 function sendPostRequest(apiUri, data, responseCallback, errorCallback) {
-    axios.post(apiUri, data).then(responseCallback).catch(errorCallback);
+    axios.post(apiUri, data, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(responseCallback)
+    .catch(errorCallback);
 }
 
 function sendPutRequest(apiUri, data, responseCallback, errorCallback) {
@@ -129,7 +136,7 @@ export function fetchArticleById(articleCodePk) {
 }
 
 export function addCommentAPI(commentData) {
-    const uri = `http://localhost:30001/reply`; // 백엔드 엔드포인트 주소 확인 필요
+    const uri = baseUri + 'reply'; // 백엔드 엔드포인트 주소 확인 필요
     return axios.post(uri, commentData)
         .then(response => response.data)
         .catch(error => {
@@ -139,7 +146,7 @@ export function addCommentAPI(commentData) {
 }
 
 export function addArticleLike(articleCode, userCode) {
-    const uri = `http://localhost:30001/article/bulletin/like`;
+    const uri = baseUri + 'article/bulletin/like';
     const data = {
         articleCode: articleCode,
         userCode: userCode
@@ -153,7 +160,7 @@ export function addArticleLike(articleCode, userCode) {
 }
 
 export function deleteArticleLike(articleCode, userCode) {
-    const uri = `http://localhost:30001/article/bulletin/like`;
+    const uri = baseUri + 'article/bulletin/like';
     return axios.delete(uri, { data: { articleCode, userCode } })
         .then(response => response.data)
         .catch(error => {
@@ -163,7 +170,7 @@ export function deleteArticleLike(articleCode, userCode) {
 }
 
 export function fetchArticlesLikedByUser(userCode) {
-    const uri = `http://localhost:30001/user/${userCode}`;
+    const uri = baseUri + `user/${userCode}`;
     return axios.get(uri)
         .then(response => response.data)
         .catch(error => {
@@ -173,7 +180,7 @@ export function fetchArticlesLikedByUser(userCode) {
 }
 
 export function fetchAllTrendArticles() {
-    return axios.get(`http://localhost:30001/article/trend`)
+    return axios.get(baseUri + `article/trend`)
         .then(response => response.data)  // 서버에서 받은 데이터를 반환
         .catch(error => {
             console.error('Failed to fetch trend articles:', error);
