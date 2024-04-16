@@ -11,6 +11,15 @@ const endpoint = {
     // user
     user: 'user/',
     userModify: 'user/modify',
+    getUserLikeListEndpoint: function(userCode) {
+        return `user/${userCode}/likes`;
+    },
+    getUserReplyListEndpoint: function(userCode) {
+        return `user/${userCode}/replies`;
+    },
+    getUserArticleListEndpoint: function(userCode) {
+        return `user/${userCode}/articles`;
+    },
     getFollowersEndpoint: function(userCode) {
         return `follow/${userCode}/followers`;
     },
@@ -89,6 +98,21 @@ export function modifyUserInfo(newUserInfo, responseCallback, errorCallback) {
 
     const uri = getApiUri(endpoint.userModify);
     sendPostRequest(uri, newUserInfo, responseCallback, errorCallback);
+}
+
+export function getUserLikeList(userCode, responseCallback, errorCallback) {
+    const uri = getApiUri(endpoint.getUserLikeListEndpoint(userCode));
+    sendGetRequest(uri, responseCallback, errorCallback);
+}
+
+export function getUserReplyList(userCode, responseCallback, errorCallback) {
+    const uri = getApiUri(endpoint.getUserReplyListEndpoint(userCode));
+    sendGetRequest(uri, responseCallback, errorCallback);
+}
+
+export function getUserArticleList(userCode, responseCallback, errorCallback) {
+    const uri = getApiUri(endpoint.getUserArticleListEndpoint(userCode));
+    sendGetRequest(uri, responseCallback, errorCallback);
 }
 
 export function getFollowersByUserCode(userCode, responseCallback, errorCallback) {
