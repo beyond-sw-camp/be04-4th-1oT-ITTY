@@ -1,7 +1,7 @@
 <template>
     <header id="header" class="header fixed-top" data-scrollto-offset="0">
         <div class="container-fluid d-flex align-items-center justify-content-evenly">
-            <a @click="navigateToHome" style="cursor: pointer;"><img style="border-radius: 20%; scale:70%" src="@/assets/img/logo-itty.jpg" width="130px" height="auto"></a>
+            <img style="border-radius: 20%; scale:70%; cursor: pointer;" src="@/assets/img/logo-itty.jpg" width="130px" height="auto" @click="navigateToHome">
             <nav id="navbar" class="navbar">
                 <ul>
                     <li class="dropdown">
