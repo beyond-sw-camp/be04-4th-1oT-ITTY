@@ -10,6 +10,7 @@ import org.iot.itty.user.aggregate.UserEntity;
 import org.iot.itty.user.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,11 +19,14 @@ public class UserServiceImpl implements UserService{
 
 	private final ModelMapper modelMapper;
 	private final UserRepository userRepository;
+	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@Autowired
-	public UserServiceImpl(ModelMapper modelMapper, UserRepository userRepository) {
+	public UserServiceImpl(ModelMapper modelMapper, UserRepository userRepository,
+		BCryptPasswordEncoder bCryptPasswordEncoder) {
 		this.modelMapper = modelMapper;
 		this.userRepository = userRepository;
+		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 	}
 
 	@Transactional
@@ -32,7 +36,7 @@ public class UserServiceImpl implements UserService{
 		user.setUserNickname(userDTO.getUserNickname());
 		user.setUserIntroduction(userDTO.getUserIntroduction());
 		user.setUserName(userDTO.getUserName());
-		user.setUserPassword(userDTO.getUserPassword());
+		user.setUserPassword(bCryptPasswordEncoder.encode(userDTO.getUserPassword()));
 		user.setUserPhoneNumber(userDTO.getUserPhoneNumber());
 
 		return modelMapper.map(user, UserDTO.class);
