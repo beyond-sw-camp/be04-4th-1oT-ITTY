@@ -18,33 +18,33 @@
             <div class="container">
                 <div class="row gy-4">
                     <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-out">
-                        <div class="service-item position-relative">
+                        <div class="service-item position-relative" @click="showPagePreparationAlert">
                             <div class="icon"><i class="bi bi-chat-square-dots-fill icon"></i></div>
-                            <h4><a href="" class="stretched-link">공지사항</a></h4>
+                            <h4><a class="stretched-link">공지사항</a></h4>
                             <p>클릭 시 공지사항 페이지로 이동할 예정입니다.</p>
                         </div>
                     </div><!-- End Service Item -->
 
                     <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-out" data-aos-delay="200">
-                        <div class="service-item position-relative">
+                        <div class="service-item position-relative" @click="showPagePreparationAlert">
                             <div class="icon"><i class="bi bi-people-fill icon"></i></div>
-                            <h4><a href="" class="stretched-link">1oT</a></h4>
+                            <h4><a class="stretched-link">1oT</a></h4>
                             <p>클릭 시 서비스 제작자(1oT)에 관한 페이지로 이동할 예정입니다.</p>
                         </div>
                     </div><!-- End Service Item -->
 
                     <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-out" data-aos-delay="400">
-                        <div class="service-item position-relative">
+                        <div class="service-item position-relative" @click="showPagePreparationAlert">
                             <div class="icon"><i class="bi bi-question-circle icon"></i></div>
-                            <h4><a href="" class="stretched-link">FAQ</a></h4>
+                            <h4><a class="stretched-link">FAQ</a></h4>
                             <p>클릭 시 FAQ(문의, 신고 게시판)으로 이동할 예정입니다.</p>
                         </div>
                     </div><!-- End Service Item -->
 
                     <div class="col-xl-3 col-md-6 d-flex" data-aos="zoom-out" data-aos-delay="600">
-                        <div class="service-item position-relative">
+                        <div class="service-item position-relative" @click="navigateToEvent">
                             <div class="icon"><i class="bi bi-gift-fill icon"></i></div>
-                            <h4><a href="" class="stretched-link">EVENT</a></h4>
+                            <h4><a class="stretched-link">EVENT</a></h4>
                             <p>클릭 시 이벤트 관련 페이지로 이동할 예정입니다.</p>
                         </div>
                     </div><!-- End Service Item -->
@@ -85,9 +85,9 @@
                             <div class="img">
                                 <img src="./img/logo-team.png" class="img-fluid" alt="">
                             </div>
-                            <div class="details position-relative">
+                            <div class="details position-relative" @click="navigateToTrendBoard">
                                 <div class="icon"><i class="bi bi-activity"></i></div>
-                                <a href="#" class="stretched-link"><h3>다양한 IT 정보</h3></a>
+                                <a class="stretched-link"><h3>다양한 IT 정보</h3></a>
                                 <p>클릭 시 IT정보(전체) 게시판으로 이동할 예정입니다.</p>
                             </div>
                         </div>
@@ -97,9 +97,9 @@
                             <div class="img">
                                 <img src="./img/logo-team.png" class="img-fluid" alt="">
                             </div>
-                            <div class="details position-relative">
+                            <div class="details position-relative" @click="showPagePreparationAlert">
                                 <div class="icon"><i class="bi bi-chat-dots"></i></div>
-                                <a href="#" class="stretched-link"><h3>스터디 모집 커뮤니티</h3></a>
+                                <a class="stretched-link"><h3>스터디 모집 커뮤니티</h3></a>
                                 <p>클릭 시 스터디를 모집하는 커뮤니티가 활성화된 게시판으로 이동할 예정입니다.</p>
                             </div>
                         </div>
@@ -109,9 +109,9 @@
                             <div class="img">
                                 <img src="./img/logo-team.png" class="img-fluid" alt="">
                             </div>
-                            <div class="details position-relative">
+                            <div class="details position-relative" @click="showPagePreparationAlert">
                                 <div class="icon"><i class="bi bi-journal-text"></i></div>
-                                <a href="#" class="stretched-link"><h3>경력직 개발자와 커뮤니케이션</h3></a>
+                                <a class="stretched-link"><h3>경력직 개발자와 커뮤니케이션</h3></a>
                                 <p>클릭 시 경력직 개발자와 관련 된 게시판(이름 미정)으로 이동할 예정입니다.</p>
                             </div>
                         </div>
@@ -131,6 +131,17 @@
 
     const router = useRouter();
 
+    function showPagePreparationAlert() {
+        alert('페이지 준비 중입니다.');
+    }
+
+    function navigateToEvent() {
+        router.push('/event-board');
+    }
+
+    function navigateToTrendBoard() {
+        router.push('/trend-board');
+    }
 /**
 * Template Name: HeroBiz
 * Template URL: https://bootstrapmade.com/herobiz-bootstrap-business-template/
