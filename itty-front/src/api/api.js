@@ -52,7 +52,13 @@ function sendPostRequest(apiUri, data, responseCallback, errorCallback) {
 }
 
 function sendPutRequest(apiUri, data, responseCallback, errorCallback) {
-    axios.put(apiUri, data).then(responseCallback).catch(errorCallback);
+    axios.put(apiUri, data, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(responseCallback)
+    .catch(errorCallback);
 }
 
 /**
@@ -83,7 +89,7 @@ export function regist(userInfo, responseCallback, errorCallback) {
 
 export function withdrawal(userInfo, responseCallback, errorCallback) {
     const uri = getApiUri(endpoint.withdrawal);
-    sendPostRequest(uri, userInfo, responseCallback, errorCallback);
+    sendPutRequest(uri, userInfo, responseCallback, errorCallback);
 }
 
 /**
