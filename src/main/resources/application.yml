@@ -4,9 +4,9 @@ server:
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://192.168.0.30:3306/itty
-    username: root
-    password: root
+    url: ENC(FGSJwbyRhidktOENgIqYcTLOOfE+9EJErFhx+h8oORN/fYiygYB0F6wUVDx+OVWj)
+    username: ENC(g9NGIJXcf3q5rDmiH93Rmw==)
+    password: ENC(RVdjbYhgxfeS6zW0/9XwFA==)
   jpa:
     generate-ddl: false
     show-sql: true
@@ -16,7 +16,7 @@ spring:
         '[format_sql]': true
   data:
     redis:
-      host: 192.168.0.31
+      host: ENC(s91aUcvxcDxr828Jaor8DgcZH5gNG14/)
       port: 6379
       expiration_time: 259200000 #3일
   cache:
@@ -25,7 +25,8 @@ spring:
 
 token:
   expiration_time: 86400000 #1일
-  secret: k/3f0rHITyFhkBQWfa7rlSAQ3s07wIgj7pUGgq5Q4EXbihvcPPapnHnKQAWV+u3mXJzIBQ9Cm++F0JPEHIv80g==
+#  secret: k/3f0rHITyFhkBQWfa7rlSAQ3s07wIgj7pUGgq5Q4EXbihvcPPapnHnKQAWV+u3mXJzIBQ9Cm++F0JPEHIv80g==
+  secret: ENC(q9ML/EQLAdT+fVv5Qnj8gE/fU1lNBF6uQdeioxBCMKNoc2v7QkCD41002csydzvcf+iS89jMneK1SA/h/mvcNg4stuIqC/r++RODkaqhOWaNQ+y3z7EBGJ70+HHFugh9PEmR+S6kw4o=)
 
 management:
   endpoints:
@@ -39,3 +40,10 @@ management:
   metrics:
     tags:
       application: ${spring.application.name}
+
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+#    algorithm: PBEWithMD5AndDES
+#    #    password: ${ENCRYPTION_PASSWORD:test}
+#    iv-generator-classname: org.jasypt.iv.NoIvGenerator
