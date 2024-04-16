@@ -4,9 +4,9 @@ server:
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: ENC(FGSJwbyRhidktOENgIqYcTLOOfE+9EJErFhx+h8oORN/fYiygYB0F6wUVDx+OVWj)
+    url: ENC(Y+6O4CIm8saxSdkU5Mc1asoAhTRn91s37uFt3HgKPBY5hBmWrx2iUjYq4oabRcms)
     username: ENC(g9NGIJXcf3q5rDmiH93Rmw==)
-    password: ENC(RVdjbYhgxfeS6zW0/9XwFA==)
+    password: ENC(mDfW/FGG98WTrCzz0d2qyQ==)
   jpa:
     generate-ddl: false
     show-sql: true
@@ -16,7 +16,7 @@ spring:
         '[format_sql]': true
   data:
     redis:
-      host: ENC(s91aUcvxcDxr828Jaor8DgcZH5gNG14/)
+      host: ENC(btnyrLqY+f7AO9+CMFNqh44Iz6WJMVST)
       port: 6379
       expiration_time: 259200000 #3일
   cache:
