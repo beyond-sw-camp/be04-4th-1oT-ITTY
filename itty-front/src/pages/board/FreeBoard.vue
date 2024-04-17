@@ -55,12 +55,12 @@
 
 onMounted(async () => {
   try {
-    const response = await api.fetchAllArticles();
-    console.log(response.data);
-    posts.value = response.data.sort((a, b) => new Date(b.articleCreatedDate) - new Date(a.articleCreatedDate));
-    posts.value = response.data; // 서버로부터 받은 게시글 데이터 저장
+    console.log("트렌드 게시글을 불러오는 중...");
+    const fetchedArticles = await fetchAllTrendArticles();
+    articles.value = fetchedArticles.sort((a, b) => new Date(b.trendArticleCreatedDate) - new Date(a.trendArticleCreatedDate));
+    console.log("불러온 트렌드 게시글:", articles.value);
   } catch (error) {
-    console.error('Failed to fetch articles:', error);
+    console.error("트렌드 게시글 불러오기 에러:", error);
   }
 });
 
