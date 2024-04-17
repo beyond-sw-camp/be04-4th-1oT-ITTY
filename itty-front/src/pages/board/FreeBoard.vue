@@ -17,8 +17,8 @@
       <tbody>
         <tr v-for="post in posts" :key="post.id">
           <td>{{ formatDate(post.articleCreatedDate) }}</td>
-          <td><router-link :to="{ name: 'article', params: { id: post.articleCodePk }}">{{ post.articleTitle }}</router-link></td>
-          <td>{{ post.userCodeFk }}</td>
+          <td><router-link :to="{ name: 'article', params: { id: post.articleCodePk, nickname: post.authorOfArticle.userNickname }}">{{ post.articleTitle }}</router-link></td>
+          <td>{{ post.authorOfArticle.userNickname }}</td>
           <td>{{ post.articleViewCount }}</td>
         </tr>
       </tbody>

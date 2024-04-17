@@ -1,77 +1,59 @@
 <template>
-    <div class="user-info-window">
-      <br>
-      <div class="user-detail">
-        <label>이름:  </label>
-        <span>{{ userInfo.userName }}</span>
-      </div>
-      <br>
-      <br>
-      <div class="user-detail">
-        <label>Email:  </label>
-        <span>{{ userInfo.userEmail }}</span>
-      </div>
-      <br>
-      <br>
-      <div class="user-detail">
-        <label>전화번호:  </label>
-        <span>{{ userInfo.userPhoneNumber }}</span>
-      </div>
+  <div class="user-info-window">
+    <br>
+    <div class="user-detail">
+      <label>이름:  </label>
+      <span>{{ userInfo.userName }}</span>
     </div>
-  </template>
+    <br><br>
+    <div class="user-detail">
+      <label>Email:  </label>
+      <span>{{ userInfo.userEmail }}</span>
+    </div>
+    <br><br>
+    <div class="user-detail">
+      <label>전화번호:  </label>
+      <span>{{ userInfo.userPhoneNumber }}</span>
+    </div>
+  </div>
+</template>
   
-  <script setup>
-  import { ref, onMounted } from 'vue';
+<script setup>
+
+    import { ref, onMounted, inject } from 'vue';
+
+    const userInfo = inject('userInfo');
+
+</script>
   
-  import * as api from '@/api/api.js';
+<style scoped>
+  .user-info-window {
+    border: 1px solid #dee2e6; /* Light grey border */
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 40px auto; /* Centers the box and gives some space from the top */
+    background-color: #f8f9fa; /* Light background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+  }
 
-  onMounted(() => {
-    api.findUserByUserCode(
-      1,
-      function(response) {
-        /*
-        console.log(response);
-        */
-        userInfo.value = response.data;
-      },
-      function(error) {
-        console.log(error);
-      }
-    )
-  })
+  .user-detail {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Aligns content to the left */
+    margin-bottom: 1rem; /* Provides consistent margin to the bottom */
+    font-size: 1rem; /* Sets a readable font size */
+  }
 
-  const userInfo = ref({});
-  
-  </script>
-  
-  <style scoped>
-    .user-info-window {
-  border: 1px solid #dee2e6; /* Light grey border */
-  border-radius: 8px;
-  padding: 20px;
-  max-width: 1000px;
-  margin: 40px auto; /* Centers the box and gives some space from the top */
-  background-color: #f8f9fa; /* Light background */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow */
-}
+  .user-detail label {
+    min-width: 80px; /* Gives labels a consistent width */
+    font-weight: bold;
+    color: #495057; /* Dark grey color for text for better readability */
+  }
 
-.user-detail {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start; /* Aligns content to the left */
-  margin-bottom: 1rem; /* Provides consistent margin to the bottom */
-  font-size: 1rem; /* Sets a readable font size */
-}
-
-.user-detail label {
-  min-width: 80px; /* Gives labels a consistent width */
-  font-weight: bold;
-  color: #495057; /* Dark grey color for text for better readability */
-}
-
-.user-detail span {
-  font-weight: normal;
-  color: #212529; /* Even darker color for contrast */
-  margin-left: 0.5rem; /* Space between label and value */
-}
-  </style>
+  .user-detail span {
+    font-weight: normal;
+    color: #212529; /* Even darker color for contrast */
+    margin-left: 0.5rem; /* Space between label and value */
+  }
+</style>

@@ -79,11 +79,11 @@ const router = createRouter({
             component: ArticleView
         },
         {
-            path: '/article/:id', 
+            path: '/article/:id/:nickname', 
             name: 'article',
             component: ArticleView,
             props: true 
-          },
+        },
     ]
  
 });

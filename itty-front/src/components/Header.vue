@@ -1,7 +1,7 @@
 <template>
     <header id="header" class="header fixed-top" data-scrollto-offset="0">
         <div class="container-fluid d-flex align-items-center justify-content-evenly">
-            <a @click="navigateToHome" style="cursor: pointer;"><img style="border-radius: 20%; scale:70%" src="@/assets/img/logo-itty.jpg" width="130px" height="auto"></a>
+            <img style="border-radius: 20%; scale:70%; cursor: pointer;" src="@/assets/img/logo-itty.jpg" width="130px" height="auto" @click="navigateToHome">
             <nav id="navbar" class="navbar">
                 <ul>
                     <li class="dropdown">
@@ -13,8 +13,17 @@
                             <li><a @click="navigateToEvent">EVENT</a></li>
                         </ul>
                     </li>
-                    <li><a class="nav-link scrollto" href="#about">Guide</a></li>
-                    <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                    
+                    <template v-if="isHome">
+                        <li><a class="nav-link scrollto" href="#about">Guide</a></li>
+                        <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                    </template>
+
+                    <template v-else>
+                        <li style="cursor: pointer;"><a class="nav-link">Guide</a></li>
+                        <li style="cursor: pointer;"><a class="nav-link">Services</a></li>
+                    </template>
+
                     <li class="dropdown"><a><span>게시판</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
                             <li class="dropdown"><a><span>트렌드 게시판</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
@@ -64,6 +73,7 @@
     const router = useRouter();
 
     const isBeforeLogin = ref(true);
+    const isHome = ref(true);
 
     function navigateToTrendBoard() {
         router.push('/trend-board');
@@ -108,6 +118,14 @@
         }
 
         isBeforeLogin.value = !window.localStorage.getItem('loginInfo');
+
+        isHome.value = !window.location.href.split('/')[3];
+        console.log(isHome.value);
+        
+        if (!isHome.value && window.scrollY > 10) {
+            window.scrollTo(0,0);
+        }
+
     });
 </script>
 

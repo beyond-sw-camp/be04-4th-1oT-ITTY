@@ -5,7 +5,7 @@
     <div class="article-container">
       <div class="article-header">
         <h1>{{ article.articleTitle }}</h1>
-        <span class="author">{{ article.userCodeFk }}</span>
+        <span class="author">{{ userNickname }}</span>
       </div>
       <hr>
       <div class="article-content">
@@ -46,14 +46,19 @@ const article = ref('');
 const comments = ref([]);
 const likedArticlesResponse = ref();
 const newComment = ref('');
+const userNickname = ref('');
+
 const route = useRoute();
 
 onMounted(async () => {
   try {
+    userNickname.value = route.params.nickname;
+
     const articleCodePk = route.params.id;
     const userCode = 1; // 사용자 코드 설정
 
     const articleResponse = await api.fetchArticleById(articleCodePk);
+
     if (articleResponse && articleResponse.articleTitle) {
       article.value = {...article.value, ...articleResponse};
     } else {
