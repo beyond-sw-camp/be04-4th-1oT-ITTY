@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: itty-db-service
+spec:
+  type: ClusterIP
+  ports:
+  - port: 3306
+    targetPort: 3306
+    protocol: TCP
+  externalIPs:
+  - 192.168.0.30
+  selector:
+    app: itty-db

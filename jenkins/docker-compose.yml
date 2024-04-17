@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  jenkins:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: 'jenkins_docker'
+    restart: always
+    user: root
+    ports:
+      - '8080:8080'
+      - '50000:50000'
+      
+ # ./jenkins_home:/var/jenkins_home은 Jenkins 데이터를 호스트의 jenkins_home 디렉토리에 저장하며, 
+ # /var/run/docker.sock:/var/run/docker.sock은 컨테이너 내부에서 호스트의 Docker 데몬에 접근할 수 있게 한다.
+ # 후자는 Jenkins 컨테이너 내에서 Docker 명령어를 사용할 수 있게 한다.
+    volumes:
+      - './jenkins_home:/var/jenkins_home'
+      - '/var/run/docker.sock:/var/run/docker.sock'
