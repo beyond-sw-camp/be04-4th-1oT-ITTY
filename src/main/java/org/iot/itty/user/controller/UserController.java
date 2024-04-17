@@ -130,7 +130,7 @@ public class UserController {
 			}
 		}
 		else{
-			responseUser.setResultCode(200);
+			responseUser.setResultCode(400);
 			responseUser.setMessage("비밀번호 확인 바랍니다.");
 		}
 
