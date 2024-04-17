@@ -56,22 +56,23 @@
                             <div class="col-md-12">       
                                 <div class="tab-content" id="nav-tabContent">
                                     <div class="tab-pane fade show active" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
-                                        <div class="product-grid row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5" style="display: flex; flex-wrap:wrap;">
+                                        <div class="product-grid row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
                                 
                                             <div v-for="(article, index) in articles" :key="index" class="col">
-    <div class="product-item">
-        <span class="badge bg-success position-absolute m-1">{{ article.trendArticleCategory }}</span>
-        <figure>
-            <a href="single-product.html" title="Product Title">
-                <a :href="article.trendArticleUrl" title="Product Title">
-                   <img :src="article.trendArticleImageUrl" class="tab-image">
-                </a>
-            </a>
-        </figure>
-        <h3>{{ article.trendArticleTitle }}</h3>
-        <span class="qty">{{ truncateText(article.trendArticleContent, 30) }}</span>
-    </div>
-</div>
+                                                <div class="product-item">
+                                                    <span class="badge bg-success position-absolute m-1">{{ article.trendArticleCategory }}</span>
+                                                    <figure>
+                                                        <a href="single-product.html" title="Product Title">
+                                                            <a :href="article.trendArticleUrl" title="Product Title">
+                                                            <img :src="article.trendArticleImageUrl" class="tab-image">
+                                                            </a>
+                                                        </a>
+                                                    </figure>
+                                                    <h3>{{ article.trendArticleTitle }}</h3>
+                                                    <span class="qty">{{ truncateText(article.trendArticleContent, 30) }}</span>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>             
@@ -80,7 +81,7 @@
                     </div>
                 </section>
                 <!-- Pagination -->
-                <div class="pagination">
+                <div class="pagination" style="display: none;">
                     <!--<a href="#" class="button previous">Previous Page</a>-->
                     <div class="pages">
                         <a href="#" class="active">1</a>
@@ -385,25 +386,29 @@ section {
 }
 
   /* product-grid */
-/* .product-grid {
-	gap: 25px;
-} */
+.product-grid {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
 
 .bg-success {
     background-color: #fec84a;
 }
 
 .product-item {
-    max-width: 200px;
+    /*max-width: 200px;*/
+    height: 100%;
     position: relative;
     padding: 16px;
     background: #FFFFFF;
     border: 1px solid #FBFBFB;
     box-shadow: 0px 5px 22px rgba(0, 0, 0, 0.04);
     border-radius: 16px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     transition: box-shadow 0.3s ease-out;
-    }
+}
 .product-item:hover {
 		box-shadow: 0px 21px 44px rgba(0, 0, 0, 0.08);
 }
@@ -425,6 +430,7 @@ section {
 .product-item figure img {
     max-height: 100px;
     height: auto;
+    max-width: -webkit-fill-available;
 }
 .product-item .btn-wishlist {
     position: absolute;
@@ -1948,7 +1954,7 @@ ol li {
         z-index: 10;
     }
 
-    carousel-control-next, .carousel-control-prev {
+    .carousel-control-next, .carousel-control-prev {
         position: absolute;
         top: 0;
         bottom: 0;
@@ -1995,4 +2001,15 @@ ol li {
     margin-right: -100%;
 }
 
+.carousel-control-next,
+.carousel-control-prev {
+    background: 0 0;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0;
+}
+.carousel-control-next:hover,
+.carousel-control-prev:hover {
+    background-color: #747474
+}
 </style>
