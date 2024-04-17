@@ -197,8 +197,8 @@
 }
 
 .text-bg-success {
-  color: #fff !important;
-  background-color: RGBA(var(--bs-success-rgb), var(--bs-bg-opacity, 1)) !important;
+  color: #fff;
+  background-color: RGBA(var(--bs-success-rgb), var(--bs-bg-opacity, 1));
 }
 
 .text-bg-info {

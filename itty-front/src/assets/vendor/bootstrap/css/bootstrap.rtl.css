@@ -6834,8 +6834,8 @@ textarea.form-control-lg {
 }
 
 .text-bg-success {
-  color: #fff !important;
-  background-color: RGBA(var(--bs-success-rgb), var(--bs-bg-opacity, 1)) !important;
+  color: #fff;
+  background-color: RGBA(var(--bs-success-rgb), var(--bs-bg-opacity, 1));
 }
 
 .text-bg-info {
@@ -8789,7 +8789,7 @@ textarea.form-control-lg {
 
 .bg-success {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
+  background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity));
 }
 
 .bg-info {
@@ -8876,7 +8876,7 @@ textarea.form-control-lg {
 }
 
 .bg-success-subtle {
-  background-color: var(--bs-success-bg-subtle) !important;
+  background-color: var(--bs-success-bg-subtle);
 }
 
 .bg-info-subtle {
