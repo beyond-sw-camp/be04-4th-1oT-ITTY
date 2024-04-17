@@ -616,7 +616,8 @@ pipeline {
 
 <details>
  <summary><b>ITTY 테스트 명세서</b></summary>
-<a href="https://docs.google.com/spreadsheets/d/1IS_woAh7IsvPFhevX0S7vHAVZlR19LKZNzXk-3528i4/edit#gid=0"><img src="테스트 정의서 이미지 넣어야 함"/></a>
+<a href="https://docs.google.com/spreadsheets/d/1IS_woAh7IsvPFhevX0S7vHAVZlR19LKZNzXk-3528i4/edit#gid=0"><img src="https://github.com/mini-xi/ittyreadme/blob/963b3e5fe48d1f2ee306a2ecf45f1a470a8995c8/img/ITTY-%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EC%BC%80%EC%9D%B4%EC%8A%A4%20%EC%A0%95%EC%9D%98%EC%84%9C1.jpg"/></a>
+<a href="https://docs.google.com/spreadsheets/d/1IS_woAh7IsvPFhevX0S7vHAVZlR19LKZNzXk-3528i4/edit#gid=0"><img src="https://github.com/mini-xi/ittyreadme/blob/963b3e5fe48d1f2ee306a2ecf45f1a470a8995c8/img/ITTY-%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EC%BC%80%EC%9D%B4%EC%8A%A4%20%EC%A0%95%EC%9D%98%EC%84%9C2.jpg"/></a>
 </details>
 
 ## 9. 테스트
