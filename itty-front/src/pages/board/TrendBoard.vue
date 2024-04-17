@@ -60,7 +60,7 @@
                                 
                                             <div v-for="(article, index) in articles" :key="index" class="col">
                                                 <div class="product-item">
-                                                    <span class="badge bg-success position-absolute m-1">{{ article.trendArticleCategory }}</span>
+                                                    <span :class="getBadgeClass(article.trendArticleCategory)" class="badge bg-success position-absolute m-1">{{ article.trendArticleCategory }}</span>
                                                     <figure>
                                                         <a href="single-product.html" title="Product Title">
                                                             <a :href="article.trendArticleUrl" title="Product Title">
@@ -207,6 +207,27 @@ function truncateText(text, length) {
   if (text.length <= length) return text;
   return text.substring(0, length) + '...';
 }
+
+const getBadgeClass = (category) => {
+    switch (category) {
+        case "IT기업":
+            return "badge-it-company";
+        case "IT·과학":
+            return "badge-it-science";
+        case "포털/플랫폼":
+            return "badge-portal-platform";
+        case "디지털마케팅":
+            return "badge-digital-marketing";
+        case "보안/해킹":
+            return "badge-security-hacking";
+        case "게임":
+            return "badge-game";
+        case "모바일/통신...":
+            return "badge-mobile";
+        default:
+            return "badge-bg";
+  }
+};
 </script>
 
 <style scoped>
@@ -501,6 +522,30 @@ section {
     border-radius: 6px;
     color: #222;
     padding: 0;
+}
+.badge-it-company {
+    background-color: #007BFF;
+}
+.badge-it-science {
+    background-color: #28A745;
+}
+.badge-portal-platform {
+    background-color: #17A2B8;
+}
+.badge-digital-marketing {
+    background-color: #FFAC07;
+}
+.badge-security-hacking {
+    background-color: #DC3545;
+}
+.badge-mobile {
+    background-color: #E65CFF;
+}
+.badge-game {
+    background-color: #919600;
+}
+.badge-bg {
+    background-color: #000000;
 }
 
 body {

@@ -197,7 +197,7 @@
 }
 
 .text-bg-success {
-  color: #000000;
+  color: #fff;
   background-color: RGBA(var(--bs-success-rgb), var(--bs-bg-opacity, 1));
 }
 
@@ -2152,7 +2152,7 @@
 
 .bg-success {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity));
+  background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
 }
 
 .bg-info {
@@ -2239,7 +2239,7 @@
 }
 
 .bg-success-subtle {
-  background-color: var(--bs-success-bg-subtle);
+  background-color: var(--bs-success-bg-subtle) !important;
 }
 
 .bg-info-subtle {
