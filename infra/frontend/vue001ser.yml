@@ -1,0 +1,21 @@
+# 네트워크 서비스로 파드 집합에서 실행중인 애플리케이션을 노출하는 방법
+apiVersion: v1 # 사용할 Kubernetes API 버전을 명시한다. 'v1'은 Service와 같은 기본 리소스를 지원한다.
+kind: Service # 생성하려는 리소스의 종류를 나타낸다. 여기서는 Service를 생성하려고 한다.
+metadata:
+  name: vue001ser # Service의 이름을 설정한다. 이 이름으로 Service를 식별할 수 있다.
+
+spec: # Service의 사양을 정의한다. 여기에는 서비스 유형, 포트 설정, 셀렉터 등이 포함된다.
+  type: NodePort # 서비스 유형을 NodePort로 설정한다. 이는 클러스터 외부에서 내부 파드에 접근할 수 있도록 한다.
+  ports:
+  
+    # 서비스의 포트
+  - port: 8000 
+  
+    # 컨테이너 포트(파드의 포트)
+    targetPort: 5173 
+    protocol: TCP 
+    
+    # 워커 노드의 포트
+    nodePort: 30002 # 클러스터의 모든 노드에서 이 포트를 통해 서비스에 접근할 수 있다.(30000 ~ 32767)
+  selector:
+    app: vue001kube # 이 셀렉터는 'app=vue001kube' 레이블이 있는 파드를 서비스의 대상으로 지정한다.

@@ -1,0 +1,28 @@
+apiVersion: apps/v1 # 사용할 Kubernetes API 버전을 명시한다. 'apps/v1'은 Deployment를 포함한 여러 리소스를 지원한다.
+kind: Deployment # 생성하려는 리소스의 종류를 나타낸다. 여기서는 Deployment를 생성하려고 한다.
+metadata: # 리소스에 대한 메타데이터를 정의한다. 이름, 네임스페이스, 레이블 등을 포함할 수 있다.
+  name: vue001dep # Deployment의 이름을 설정한다. 이 이름으로 Deployment를 식별할 수 있다.
+
+spec: # Deployment의 사양을 정의한다. 여기에는 레플리카 수, 셀렉터, 템플릿 등이 포함된다.
+
+  # 디플로이먼트가 특정한 레이블이 부여된 파드를 관리할 수 있도록 하는 설정
+  selector:
+    matchLabels:
+      app: vue001kube # 이 셀렉터는 'app=vue001kube' 레이블이 있는 파드만을 대상으로 한다.
+
+  # 생성할 파드의 정보를 기재
+  template: # 파드 템플릿을 정의한다. 이 템플릿은 파드 생성에 사용된다.
+
+    # 파드 하나의 메타 데이터
+    metadata:
+      labels:
+        app: vue001kube # 생성될 파드에 'app=vue001kube' 레이블을 부여한다.
+
+    # 파드 하나의 스펙
+    spec:
+      containers:
+      - name: vue-container # 컨테이너의 이름을 설정한다.
+        image: null00007/frontend:latest # 사용할 컨테이너 이미지를 지정한다. 여기서는 'ys0915/k8s_vue:latest'를 사용한다.
+        imagePullPolicy: Always # 이미지 풀 정책을 'Always'로 설정하여 항상 최신 이미지를 사용하도록 한다.
+        ports:
+        - containerPort: 5173 # 컨테이너가 리스닝할 포트 번호를 지정한다. 여기서는 5173번 포트를 사용한다.
