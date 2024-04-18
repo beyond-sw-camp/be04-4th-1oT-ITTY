@@ -623,7 +623,7 @@ pipeline {
 - 재시도: 일시적인 문제로 인해 실패했을 수 있으므로, 문제를 수정한 후 빌드 또는 배포를 재시도.<br><br>
 </details>
 
-### Jenkins를 통한 Pipeline 구축, CI/CD
+### Jenkins를 통한 Pipeline 구축, CI/CD(요약)
 
 <details>
 	<summary><b>Jenkins Schedule 및 구현</b></summary>
