@@ -587,6 +587,18 @@ pipeline {
     }
 }
 ```
+- gradle 'gradle': Gradle 빌드 도구를 사용하도록 설정.
+- (jdk 'openJDK17': OpenJDK 17을 사용하도록 지정)
+
+<b>Stage(Preparation)</b>
+- 필요한 도구들이 설치되어 있는지 확인
+- docker --version: Docker가 설치되어 있는지 확인하는 커맨드를 실행.
+
+<b>Stage(Source Build)</b>
+- 소스 코드를 체크아웃하고 빌드.
+- git branch: 'main', url: '${GITHUB_URL}': 지정된 GitHub URL에서 메인 브랜치의 최신 소스 코드를 체크아웃.
+- chmod +x ./gradlew: Gradle wrapper 파일에 실행 권한을 부여.
+- ./gradlew clean build -P jasypt.encryptor.password=itty: 소스 코드를 빌드.(-P jasypt.encryptor.password=itty로 빌드 중 필요한 암호화 키를 제공)
 
 ### Build가 제대로 되지 않았을 때
 
@@ -636,74 +648,6 @@ pipeline {
 6. 모니터링 및 알림<br>
 - 모니터링 도구 통합: Prometheus, Grafana 등을 사용하여 애플리케이션의 성능을 실시간으로 모니터링.<br>
 - 알림 설정: Slack, 이메일 등을 통해 이슈에 대해서 알림을 받아볼 수 있음.<br>
-
-<hr>
-
-```
-pipeline {
-    agent any
-
-    tools {
-        gradle 'gradle'
-        jdk 'openJDK17'
-    }
-
-    environment {
-        DOCKERHUB_USERNAME = 'eodud3196'
-        GITHUB_URL = 'https://github.com/1oT-Itty/itty-spring-backend.git'
-    }
-
-    stages {
-        stage('Preparation') {
-            steps {
-                script {
-                    sh 'docker --version' // Docker가 설치되어 있는지 확인
-                }
-            }
-        }
-        stage('Source Build') {
-            steps {
-                // 소스파일 체크아웃
-                git branch: 'main', url: 'https://github.com/1oT-Itty/itty-spring-backend.git'
-
-                // 소스 빌드
-                // 755권한 필요 (윈도우에서 Git으로 소스 업로드시 권한은 644)
-                sh "chmod +x ./gradlew"
-                sh "./gradlew clean build -P jasypt.encryptor.password=itty"
-            }
-        }
-        stage('Container Build') {
-            steps {	
-    
-                // jar 파일 복사
-                sh "cp ./build/libs/*.jar ."
-    
-                // 컨테이너 빌드 및 업로드
-                sh "docker build -t ${DOCKERHUB_USERNAME}/backend-server:latest ."
-
-                // docker hub로 push
-                withCredentials([usernamePassword(credentialsId: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USER', passwordVariable: 'DOCKERHUB_PASS')]) {
-                    sh "echo $DOCKERHUB_PASS | docker login --username $DOCKERHUB_USER --password-stdin"
-                    sh "docker push ${DOCKERHUB_USERNAME}/backend-server:latest"
-                }
-            }
-        }
-    }
-}
-```
-
-- gradle 'gradle': Gradle 빌드 도구를 사용하도록 설정.
-- (jdk 'openJDK17': OpenJDK 17을 사용하도록 지정)
-
-<b>Stage(Preparation)</b>
-- 필요한 도구들이 설치되어 있는지 확인
-- docker --version: Docker가 설치되어 있는지 확인하는 커맨드를 실행.
-
-<b>Stage(Source Build)</b>
-- 소스 코드를 체크아웃하고 빌드.
-- git branch: 'main', url: '${GITHUB_URL}': 지정된 GitHub URL에서 메인 브랜치의 최신 소스 코드를 체크아웃.
-- chmod +x ./gradlew: Gradle wrapper 파일에 실행 권한을 부여.
-- ./gradlew clean build -P jasypt.encryptor.password=itty: 소스 코드를 빌드.(-P jasypt.encryptor.password=itty로 빌드 중 필요한 암호화 키를 제공)
 
 </details>
 
