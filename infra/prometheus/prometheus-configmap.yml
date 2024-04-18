@@ -11,7 +11,9 @@ data:
       - job_name: prometheus
         metrics_path: '/actuator/prometheus'
         static_configs:
-          - targets: ['10.1.1.67:8888']       # kubectl describe pod [spring pod 이름]의 ip 주소로 수정
+          - targets: ['34f2-121-170-161-69.ngrok-free.app']
+        scheme: https
+
 
       - job_name: jenkins
         metrics_path: '/prometheus/'
