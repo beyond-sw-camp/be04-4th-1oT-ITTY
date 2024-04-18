@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: itty-db
-        image: eodud3196/db_server:latest # 여기에 실제 이미지 이름과 태그를 사용하세요.
+        image: null00007/db-server:latest # 여기에 실제 이미지 이름과 태그를 사용하세요.
         volumeMounts:
         - name: itty-db-storage
           mountPath: /var/lib/mysql
