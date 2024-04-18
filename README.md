@@ -14,11 +14,11 @@
 
 ###  팀원 :
  
-[<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/mini-xi) <strong>&nbsp;&nbsp;배성민</strong> <br>
-[<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/helloItsUniverse) <strong>&nbsp;&nbsp;소우주</strong> <br>
-[<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/bucky1005) <strong>&nbsp;&nbsp;손세림</strong> <br>
-[<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/DYShin1) <strong>&nbsp;&nbsp;신대영</strong> <br>
-[<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/jhlee6515) <strong>&nbsp;&nbsp;이준형</strong> <br>
+[<img src="https://img.shields.io/badge/Github-Link-FFE482?logo=Github">](https://github.com/mini-xi) <strong>&nbsp;&nbsp;배성민</strong> <br>
+[<img src="https://img.shields.io/badge/Github-Link-FF0000?logo=Github">](https://github.com/helloItsUniverse) <strong>&nbsp;&nbsp;소우주</strong> <br>
+[<img src="https://img.shields.io/badge/Github-Link-EB99FF?logo=Github">](https://github.com/bucky1005) <strong>&nbsp;&nbsp;손세림</strong> <br>
+[<img src="https://img.shields.io/badge/Github-Link-2C633B?logo=Github">](https://github.com/DYShin1) <strong>&nbsp;&nbsp;신대영</strong> <br>
+[<img src="https://img.shields.io/badge/Github-Link-3D3A61?logo=Github">](https://github.com/jhlee6515) <strong>&nbsp;&nbsp;이준형</strong> <br>
 
 ## 1. 프로젝트 소개
 
