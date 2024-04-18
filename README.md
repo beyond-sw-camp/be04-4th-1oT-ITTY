@@ -417,6 +417,177 @@ kubectl apply -f grafana/
  
 <br>
 
+---
+
+# 7. Jenkins
+
+<aside>
+💡 Jenkins는 지속적인 통합(Continuous Integration, CI) 및 지속적인 전달(Continuous Delivery, CD)를 가능하게 하는 오픈 소스 자동화 도구. 소프트웨어 개발 및 배포 프로세스를 자동화하여 개발자 및 팀이 효율적으로 작업할 수 있는 환경을 구축하기 위해 적용함.
+
+</aside>
+
+### 7.1 Dockerfile 생성
+
+[Dockerfile](https://github.com/mini-xi/ittyreadme/blob/d94bf1cdb581931e32a2f5d0a3b592e87f611696/yml/Dockerfile)
+
+- 해당 파일은 Jenkins 컨테이너 이미지를 사용하여 초기화하는 작업을 수행함.
+- Mac용이며 생성된 컨테이너안 리눅스에 Docker가 설치가 안되어있음.
+- 추가적으로 컨테이너 실행 후 아래와 같은 명령어를 실행해야 함.
+
+```bash
+docker exec -itu 0 {컨테이너 이름} bash        #컨테이너 안 리눅스 접근
+	
+curl -fsSL https://get.docker.com -o get-docker.sh    # docker 설치
+sh get-docker.sh
+```
+
+[docker-compose.yml](https://github.com/mini-xi/ittyreadme/blob/d94bf1cdb581931e32a2f5d0a3b592e87f611696/yml/docker-compose.yml)
+
+```bash
+docker-compose up
+```
+
+- 위와 같은 명령어로 jenkins 실행
+
+### 7.2 플러그인 설치
+
+- 도커 컨테이너 실행이 완료 되면 추가 플러그인 설치가 필요함.
+    - Dashboard → Jenkins 관리 → Plugin
+- Locale, Publish over ssh, Pipeline: stage view, prometheus 설치
+    - Dashboard → Jenkins 관리 → System
+    - Locale → Default Language를 ko로 변경
+
+### 7.3 ssh 설정
+
+- Jenkins 도커 컨테이너 접속
+
+```bash
+docker exec -itu 0 {컨테이너 이름} bash        #컨테이너 안 리눅스 접근
+```
+
+- ssh-keygen 생성
+
+```bash
+# my-jenkins 디렉토리 생성
+mkdir ./ssh-jenkins
+
+# my-jenkins 디렉토리로 이동
+cd ./ssh-jenkins
+
+# .ssh 디렉토리 생성
+mkdir ./.ssh
+
+# ls -al(숨어 있어 -al 옵션으로 확인.)
+ssh-keygen -t rsa -f .ssh/ssh-jenkins-github--key
+
+# 비밀번호는 10자 이상 추천
+
+# .ssh 디렉토리로 이동
+cd ./.ssh
+
+**# private key
+cat ssh-jenkins-github--key
+
+# public key
+cat ssh-jenkins-github--key.pub**
+```
+
+### 7.3.1 Jenkins ssh public key 등록
+
+- Dashboard → Jenkins 관리 → Security
+
+```bash
+security:
+  gitHostKeyVerificationConfiguration:
+    sshHostKeyVerificationStrategy:
+      manuallyProvidedKeyVerificationStrategy:
+        approvedHostKeys: |-
+          github.com {**cat ssh-jenkins-github--key.pub 통해 확인한 public key 붙여넣기**}
+```
+
+- Credentials 추가(ssh private key를 my-github-key로 등록)
+    - ID는 ssh key 설정할때 작성한 이름으로 작성한다. ex) ssh-jenkins-github--key
+    - private key 붙여넣기
+
+### 7.4 Webhooks 설정
+
+- public key를 개발중인 Backend github repository쪽 settings → Deploy keys에 붙여넣어 키 설정.
+- ngrok을 이용하여 jenkins → {ngrok주소}:8080을 하면 jenkins를 접속할 수 있게 설정함.
+    - {ngrok주소}/github-webhook/을 settings → Webhooks에 추가함.
+
+### 7.5 Jenkins CI/CD 사용
+
+### 7.5.1. Jenkins Tools 설정
+
+- java 설정
+    - add JDK 클릭 후 Name → openJDK17, JAVA_HOME → /opt/java/openjdk 설정
+- Gradle
+    - name → gradle, install automatically 체크
+
+### 7.6 Jenkins pipeline 구축
+
+- 빌드 → Docker image 생성 → Docker hub에 push
+    - Docker hub관련 Credential 구축
+        - Username → Docker hub 사용자 이름
+        - Password → Docker hub 비밀번호
+        - ID → DOCKERHUB_PASSWORD
+- Pipeline 작성
+    - GitHub hook trigger for GITScm polling 체크
+    - Script 작성 - 보안을 위하여 ./gradlew clean build -P jasypt.encryptor.password=itty로 변경
+
+```bash
+pipeline {
+    agent any
+
+    tools {
+        gradle 'gradle'
+        jdk 'openJDK17'
+    }
+
+    environment {
+        DOCKERHUB_USERNAME = '{도커허브 아이디}'
+        GITHUB_URL = '{백엔드 깃허브 주소}'
+    }
+
+    stages {
+        stage('Preparation') {
+            steps {
+                script {
+                    sh 'docker --version' // Docker가 설치되어 있는지 확인
+                }
+            }
+        }
+        stage('Source Build') {
+            steps {
+                // 소스파일 체크아웃
+                git branch: 'main', url: '{백엔드 깃허브 주소}'
+
+                // 소스 빌드
+                // 755권한 필요 (윈도우에서 Git으로 소스 업로드시 권한은 644)
+                sh "chmod +x ./gradlew"
+                sh "./gradlew clean build -P jasypt.encryptor.password=itty"
+            }
+        }
+        stage('Container Build') {
+            steps {	
+    
+                // jar 파일 복사
+                sh "cp ./build/libs/*.jar ."
+    
+                // 컨테이너 빌드 및 업로드
+                sh "docker build -t ${DOCKERHUB_USERNAME}/{Docker image 이름}:latest ."
+
+                // docker hub로 push
+                withCredentials([usernamePassword(credentialsId: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USER', passwordVariable: 'DOCKERHUB_PASS')]) {
+                    sh "echo $DOCKERHUB_PASS | docker login --username $DOCKERHUB_USER --password-stdin"
+                    sh "docker push ${DOCKERHUB_USERNAME}/test-pipe:latest"
+                }
+            }
+        }
+    }
+}
+```
+
 ### Build가 제대로 되지 않았을 때
 
 <details>
