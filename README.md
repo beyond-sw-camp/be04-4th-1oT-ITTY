@@ -14,11 +14,11 @@
 
 ###  팀원 :
  
-[<img src="https://img.shields.io/badge/Github-Link-F5D998?logo=Github">](https://github.com/mini-xi) <strong>&nbsp;&nbsp;배성민</strong> <br>
+[<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/mini-xi) <strong>&nbsp;&nbsp;배성민</strong> <br>
 [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/helloItsUniverse) <strong>&nbsp;&nbsp;소우주</strong> <br>
-[<img src="https://img.shields.io/badge/Github-Link-F2B1FC?logo=Github">](https://github.com/bucky1005) <strong>&nbsp;&nbsp;손세림</strong> <br>
-[<img src="https://img.shields.io/badge/Github-Link-35693E?logo=Github">](https://github.com/DYShin1) <strong>&nbsp;&nbsp;신대영</strong> <br>
-[<img src="https://img.shields.io/badge/Github-Link-7E7191?logo=Github">](https://github.com/jhlee6515) <strong>&nbsp;&nbsp;이준형</strong> <br>
+[<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/bucky1005) <strong>&nbsp;&nbsp;손세림</strong> <br>
+[<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/DYShin1) <strong>&nbsp;&nbsp;신대영</strong> <br>
+[<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/jhlee6515) <strong>&nbsp;&nbsp;이준형</strong> <br>
 
 ## 1. 프로젝트 소개
 
@@ -67,7 +67,7 @@
 <hr>
 
 ## 📋 Architecture
-<img src="https://github.com/mini-xi/ittyreadme/blob/0ca77d608026ada8e5645f3aed138c95a69ceb3d/img/architectureItty.png"/>
+<img src="https://github.com/mini-xi/ittyreadme/blob/e3dbf698fe21f05ddf398fb960f433c407b7ea0b/img/itty_architecture.png"/>
 <br>
 
 ### Jasypt
@@ -150,12 +150,12 @@ docker push eodud3196/backend_server
 
 - deployment 파일 생성
     
-    [itty-project-deployment.yml](https://github.com/mini-xi/ittyreadme/blob/28776c89cbe72a17e28dd48849f3ffcc1f8448af/yml/itty-project-deployment.yml)
+    [itty-project-deployment.yml](https://github.com/mini-xi/ittyreadme/blob/d8ae941750f53d7537c904012273f5476bf30c9c/yml/itty-project-deployment.yml)
 
 
 - service 파일 생성
     
-    [itty-project-service.yml](https://github.com/mini-xi/ittyreadme/blob/9476400bf8ca15dc2a479e0bf24f1f7c288f087e/yml/itty-project-service.yml)
+    [itty-project-service.yml](https://github.com/mini-xi/ittyreadme/blob/d8ae941750f53d7537c904012273f5476bf30c9c/yml/itty-project-service.yml)
   
 
 <b> 1.8. kubelet에 deployment 적용하여 Pod 생성(컨테이너 배포)</b><br>
@@ -231,13 +231,13 @@ Cluster: 여러 노드(물리적 또는 가상의 서버)로 구성된 쿠버네
 - redis 디렉토리 생성
 - Kubernetes 실행을 위한 yml 파일 작성
     
-    [redis-configmap.yml](https://github.com/mini-xi/ittyreadme/blob/8804304fa6da4cb7396dd9412f23e9c0670c9c2e/yml/redis-configmap.yml)
+    [redis-configmap.yml](https://github.com/mini-xi/ittyreadme/blob/d8ae941750f53d7537c904012273f5476bf30c9c/yml/redis-configmap.yml)
     
     - 애플리케이션 설정을 저장하는 데 사용되는 리소스
     
-    [redis-dep.yml](https://github.com/mini-xi/ittyreadme/blob/8804304fa6da4cb7396dd9412f23e9c0670c9c2e/yml/redis-dep.yml)
+    [redis-pod.yml](https://github.com/mini-xi/ittyreadme/blob/d8ae941750f53d7537c904012273f5476bf30c9c/yml/redis-pod.yml)
     
-    [redis-svc.yml](https://github.com/mini-xi/ittyreadme/blob/8804304fa6da4cb7396dd9412f23e9c0670c9c2e/yml/redis-svc.yml)
+    [redis-svc.yml](https://github.com/mini-xi/ittyreadme/blob/d8ae941750f53d7537c904012273f5476bf30c9c/yml/redis-svc.yml)
     
     ```yaml
       externalIPs:
@@ -263,13 +263,17 @@ kubectl apply -f redis/
 
 <b> 4.1.1 Dockerfile 생성</b><br>
 
-[Dockerfile](https://github.com/mini-xi/ittyreadme/blob/8804304fa6da4cb7396dd9412f23e9c0670c9c2e/yml/Dockerfile.txt)
+Jenkins :<br>
+[Dockerfile](https://github.com/mini-xi/ittyreadme/blob/d8ae941750f53d7537c904012273f5476bf30c9c/yml/Dockerfile)
+
+DB :<br>
+[Dockerfile2](https://github.com/mini-xi/ittyreadme/blob/d8ae941750f53d7537c904012273f5476bf30c9c/yml/Dockerfile%202)
 
 - 해당 파일은 MariaDB 컨테이너 이미지를 사용하여 데이터베이스를 초기화하는 작업을 수행함.
 - 초기화 작업은 빌더 스테이지에서 수행되며, 그 결과로 초기화된 데이터베이스 디렉토리가 생성됨
 - 다음 초기화된 데이터베이스 디렉토리를 기본 MariaDB 이미지로 복사하여 최종 이미지를 생성
 
-[setup.sql](https://github.com/mini-xi/ittyreadme/blob/8804304fa6da4cb7396dd9412f23e9c0670c9c2e/yml/setup.sql)
+[setup.sql](https://github.com/mini-xi/ittyreadme/blob/d8ae941750f53d7537c904012273f5476bf30c9c/yml/setup.sql)
 
 - 해당 파일은 itty Database DDL문으로 Docker 이미지 초기 세팅할 DB이다.
 
@@ -290,13 +294,13 @@ docker push {DB image name}
 - db 디렉토리 생성
 - Kubernetes 실행을 위한 yml 파일 작성
     
-    [itty-db-volume.yml](https://github.com/mini-xi/ittyreadme/blob/8804304fa6da4cb7396dd9412f23e9c0670c9c2e/yml/itty-db-volume.yml)
+    [itty-db-volume.yml](https://github.com/mini-xi/ittyreadme/blob/d8ae941750f53d7537c904012273f5476bf30c9c/yml/itty-db-volume.yml)
     
     - 애플리케이션 설정을 저장하는 데 사용되는 리소스
     
-    [itty-db-deployment.yml](https://github.com/mini-xi/ittyreadme/blob/8804304fa6da4cb7396dd9412f23e9c0670c9c2e/yml/itty-db-deployment.yml)
+    [itty-db-deployment.yml](https://github.com/mini-xi/ittyreadme/blob/d8ae941750f53d7537c904012273f5476bf30c9c/yml/itty-db-deployment.yml)
     
-    [itty-db-service.yml](https://github.com/mini-xi/ittyreadme/blob/8804304fa6da4cb7396dd9412f23e9c0670c9c2e/yml/itty-db-service.yml)
+    [itty-db-service.yml](https://github.com/mini-xi/ittyreadme/blob/d8ae941750f53d7537c904012273f5476bf30c9c/yml/itty-db-service.yml)
     
     ```yaml
       externalIPs:
@@ -328,7 +332,7 @@ kubectl apply -f db/
 - Prometheus 디렉토리 생성
 - Kubernetes 실행을 위한 yml 파일 작성
     
-    [prometheus-configmap.yml](https://github.com/mini-xi/ittyreadme/blob/8804304fa6da4cb7396dd9412f23e9c0670c9c2e/yml/prometheus-configmap.yml)
+    [prometheus-configmap.yml](https://github.com/mini-xi/ittyreadme/blob/d8ae941750f53d7537c904012273f5476bf30c9c/yml/prometheus-configmap.yml)
     
     - 현재 이 시스템에서는 Backend와 Jenkins Server 모니터링을 진행함.
     
@@ -350,9 +354,9 @@ kubectl apply -f db/
     - 해당 IP를 prometheus.static_configs.targes 쪽에 port 8888로 수정함.
     - jenkins 서버 모니터링을 위해 imac위에서 동작하고 있는 jenkins를 ngrok을 통해 주소를 Backend서버 targets 수정한것 처럼 수정한다.
     
-    [prometheus-service.yml](https://github.com/mini-xi/ittyreadme/blob/8804304fa6da4cb7396dd9412f23e9c0670c9c2e/yml/prometheus-service.yml)
+    [prometheus-service.yml](https://github.com/mini-xi/ittyreadme/blob/d8ae941750f53d7537c904012273f5476bf30c9c/yml/prometheus-service.yml)
     
-    [prometheus-deployment.yml](https://github.com/mini-xi/ittyreadme/blob/8804304fa6da4cb7396dd9412f23e9c0670c9c2e/yml/prometheus-deployment.yml)
+    [prometheus-deployment.yml](https://github.com/mini-xi/ittyreadme/blob/d8ae941750f53d7537c904012273f5476bf30c9c/yml/prometheus-deployment.yml)
     
     - service 파일에 다음과 같이 IP를 설정함
     - Backend Server에서 192.168.0.31:6379를 이용하여 서로 통신 가능 하게 적용
@@ -384,13 +388,13 @@ kubectl apply -f prometheus/
 - grafana 디렉토리 생성
 - Kubernetes 실행을 위한 yml 파일 작성
     
-    [grafana-volume.yml](https://github.com/mini-xi/ittyreadme/blob/8804304fa6da4cb7396dd9412f23e9c0670c9c2e/yml/grafana-volume.yml)
+    [grafana-volume.yml](https://github.com/mini-xi/ittyreadme/blob/d8ae941750f53d7537c904012273f5476bf30c9c/yml/grafana-volume.yml)
     
     - 애플리케이션 설정을 저장하는 데 사용되는 리소스
     
-    [grafana-deployment.yml](https://github.com/mini-xi/ittyreadme/blob/8804304fa6da4cb7396dd9412f23e9c0670c9c2e/yml/grafana-deployment.yml)
+    [grafana-deployment.yml](https://github.com/mini-xi/ittyreadme/blob/d8ae941750f53d7537c904012273f5476bf30c9c/yml/grafana-deployment.yml)
     
-    [grafana-service.yml](https://github.com/mini-xi/ittyreadme/blob/8804304fa6da4cb7396dd9412f23e9c0670c9c2e/yml/grafana-service.yml)
+    [grafana-service.yml](https://github.com/mini-xi/ittyreadme/blob/d8ae941750f53d7537c904012273f5476bf30c9c/yml/grafana-service.yml)
     
 
 <b> 6.2. Kubernetes Redis 실행</b><br>
@@ -622,6 +626,93 @@ pipeline {
 
 ## 9. 테스트
 
+<details>
+	<summary><b>Test</b></summary>
+1. Sign Up
+	<p align="center">
+	<img src="https://github.com/mini-xi/ittyreadme/blob/d497ac1a0de5f3005c1f198ec3ef743c81736a03/img/test_itty_signup.gif"/>
+	</p>
+2. Login
+        <p align="center">
+	<img src="https://github.com/mini-xi/ittyreadme/blob/d497ac1a0de5f3005c1f198ec3ef743c81736a03/img/test_itty_login.gif"/>
+	</p>
+3. Logout
+         <p align="center">
+	<img src="https://github.com/mini-xi/ittyreadme/blob/d497ac1a0de5f3005c1f198ec3ef743c81736a03/img/test_itty_logout.gif"/>
+	</p>
+4. Sign Out
+         <p align="center">
+	<img src="https://github.com/mini-xi/ittyreadme/blob/d497ac1a0de5f3005c1f198ec3ef743c81736a03/img/test_itty_signout.gif"/>
+	</p>
+5. Main Page
+         <p align="center">
+	<img src="https://github.com/mini-xi/ittyreadme/blob/bc1f3158f8507769d386a5946aa2297f889a5ae6/img/test_itty_mainpage.gif"/>
+	</p>
+6. Main Page ( Guide-scroll )
+         <p align="center">
+	<img src="https://github.com/mini-xi/ittyreadme/blob/bc1f3158f8507769d386a5946aa2297f889a5ae6/img/test_itty_mainguidescroll.gif"/>
+	</p>
+7. Main Page ( Service-scroll )
+        <p align="center">
+	<img src="https://github.com/mini-xi/ittyreadme/blob/3414c001a22c0a4061e196f3714b1ca7c818a960/img/test_itty_mainpageservicescroll.gif"/>
+	</p>
+8. Main Page( Click event-To Trend Board)
+        <p align="center">
+	<img src="https://github.com/mini-xi/ittyreadme/blob/3414c001a22c0a4061e196f3714b1ca7c818a960/img/test_itty_mainpagetoTrend.gif"/>
+	</p>
+9. Event Page
+         <p align="center">
+	<img src="https://github.com/mini-xi/ittyreadme/blob/bc1f3158f8507769d386a5946aa2297f889a5ae6/img/test_itty_eventboard.gif"/>
+	</p>
+10. Trend Board
+        <p align="center">
+	<img src="https://github.com/mini-xi/ittyreadme/blob/bc1f3158f8507769d386a5946aa2297f889a5ae6/img/test_itty_trendboard.gif"/>
+	</p>
+11. Article Board( Free Board )
+        <p align="center">
+	<img src="https://github.com/mini-xi/ittyreadme/blob/bc1f3158f8507769d386a5946aa2297f889a5ae6/img/test_itty_article.gif"/>
+	</p>
+12. Article View
+        <p align="center">
+	<img src="https://github.com/mini-xi/ittyreadme/blob/bc1f3158f8507769d386a5946aa2297f889a5ae6/img/test_itty_article_view.gif"/>
+	</p>
+13. Article Comment
+        <p align="center">
+	<img src="https://github.com/mini-xi/ittyreadme/blob/bc1f3158f8507769d386a5946aa2297f889a5ae6/img/test_itty_freeboard_comment.gif"/>
+	</p>
+14. Article Comment Like
+        <p align="center">
+	<img src="https://github.com/mini-xi/ittyreadme/blob/bc1f3158f8507769d386a5946aa2297f889a5ae6/img/test_itty_commentlike.gif"/>
+	</p>
+15. Mainpage to Profile
+        <p align="center">
+	<img src="https://github.com/mini-xi/ittyreadme/blob/3414c001a22c0a4061e196f3714b1ca7c818a960/img/test_itty_mainpagetoProfile.gif"/>
+	</p>
+16. Profile Category
+        <p align="center">
+	<img src="https://github.com/mini-xi/ittyreadme/blob/3414c001a22c0a4061e196f3714b1ca7c818a960/img/test_itty_profileCategory.gif"/>
+	</p>
+17. User Posted View
+        <p align="center">
+	<img src="https://github.com/mini-xi/ittyreadme/blob/3414c001a22c0a4061e196f3714b1ca7c818a960/img/test_itty_userPost.gif"/>
+	</p>
+18. User Replied View
+        <p align="center">
+	<img src="https://github.com/mini-xi/ittyreadme/blob/c362c794b2efe02ce9006cb58a208ab1416f5630/img/test_itty_userReply.gif"/>
+	</p>
+19. Modify User
+            <p align="center">
+	<img src="https://github.com/mini-xi/ittyreadme/blob/3414c001a22c0a4061e196f3714b1ca7c818a960/img/test_itty_modifyUser.gif"/>
+	</p>
+20. Modify User Complete
+        <p align="center">
+	<img src="https://github.com/mini-xi/ittyreadme/blob/3414c001a22c0a4061e196f3714b1ca7c818a960/img/test_itty_modifyUserComplete.gif"/>
+	</p>
+
+	
+</details>
+
+
 ## ⚙️ Docker / Kubernetes
 
 <div align="center">
@@ -694,3 +785,10 @@ pipeline {
 
 ## 회고
 
+|&nbsp;&nbsp;팀&nbsp;원&nbsp;&nbsp;&nbsp;|회고록|
+|:---:|---|
+|배성민|&nbsp;이번 프로젝트는 데브옵스에 관한 내용이 담겨 있는 프로젝트였고, 백엔드와 프론트엔드를 구축을 해서 도커 컨테이너를 쿠버네티스로 관리하는 프로젝트를 진행했습니다.<br>&nbsp;제가 맡았던 역할은 프론트엔드 부분을 Bootstrap, HTML을 사용해서 먼저 화면을 구성하고, 이를 Vue파일로 옮기는 진행했는데 초반에는 CSS가 전역으로 설정이 되기도 하고, 원하는 기능이 제대로 적용되지 않는 구분도 많았습니다. 이는 CSS를 나누거나, 화면 구성만 해두고 백을 연동하는 과정에서 axios를 이용해서 기능을 추가해나가며 해결할 수 있었습니다.<br>&nbsp;모델링 및 화면 설계 과정에서 팀원들끼리 충분한 상의가 되어서 어느 위치에 어떤 기능이 위치해야하는지 논의를 거쳤음에도 불구하고, 프론트 과정 중에 추가하는 내용이나, 백엔드 설계 중에 화면에 추가 되어야 할 내용이 수정이 있었지만 매일 회의를 하고, Jira, Slack, Figma, Miro, GitHub 등 협업 툴을 사용하는 것으로 크게 힘든 부분 없이 프로젝트를 진행할 수 있었습니다. 프론트엔드와 백엔드 연동에서는 크게 문제가 없었지만, 배포 및 빌드 과정에서 같은 서버와 데이터베이스를 사용하며 조금 어려움이 있었습니다. 특히 MAC과 Window의 차이, 빌드 과정에서 Docker Hub에 관한 문제점들이 있었는데, 이런 부분들을 함께 해결해나가며 잘 이해할 수 있었습니다.<br>&nbsp;단순히 프론트, 백, 인프라라는 각자의 역할에서 그치는 것이 아니라 진행상황을 공유하고 서로에게 설명하는 것으로 전체적인 프로젝트를 이해하며 할 수 있었던 것 같습니다.|
+|소우주|&nbsp;프로젝트에서 백엔드 개발을 맡아 진행하였습니다. 어떻게 하면 프론트엔드 단에서 더 쉽게 백엔드 데이터를 가져가 처리할 수 있을지에 대한 고민을 가지며 API와 메소드 그리고 ResponseEntity를 구축했습니다.<br>&nbsp;그러나 처음부터 완벽할 수는 없듯이 크고 작은 수정사항들이 생겼고 그것을 매번 수정하여 팀원들에게 배포할 때마다 많은 번거로움이 있었습니다. 이 시점에 도입된 CI/CD 개념이 이러한 번거로움을 해소하여 협업을 원활히 하는 데에 있어 정말 중요한 역할을 하고 있음을 절실히 알게 되었습니다.<br>&nbsp;또한, 설정파일(application.yml) 내부의 토큰, 키 값 등 민감 정보들을 그대로 배포하는 것은 프로그램 내/외부적으로 치명적 문제가 생길 수 있기에 Jasypt를 도입하여 설정파일의 민감 정보들을 암호화하여 배포하였습니다. Jasypt 도입과 함께 프로젝트의 보안 측면에 관해서도 공부를 하게 되었는데, 보안 관련해서도 항상 긴장을 늦추지 말아야 함을 알게 되었습니다.|
+|손세림|&nbsp;이번 프로젝트를 시작하기 앞서 프로젝트를 하는데 필요한 팀 내 규칙을 규정하였습니다.<br>&nbsp;팀원들과 함께 상의하며 DB, Java, Vue 컨벤션 룰을 작성하고, 소스 코드를 관리하는 Git Commit Convention 또한 철저히 설정하였으며,이로 인해 다른사람이 작업한 내용을 확인하거나 프로젝트 진척도를 확인하는데 큰 도움이 되었습니다.&nbsp;여러 사람들이 함께 작업하는 만큼 잘 정해진 룰의 중요성에 대해 다시금 깨닫게 되었습니다.<br>&nbsp;지난 번에 이어 이번 프로젝트에서도 로그인 파트를 맡게되어, 이전에 구현하지 못했던 Acess Token과 Refresh Token 발급과 Redis를 활용한 로그아웃 기능을 구현하였습니다. 로그아웃된 토큰을 처리하는 부분에서 생각보다 많은 시간이 소요되어 기간 내 구현하지 못한 부분이 많아 아쉽기도 하지만, 이 후에도 프로젝트를 고도화해 나가며 미흡한 로그아웃과 탈퇴 처리 기능을 보완하고, OAuth 인증 방식을 도입할 예정입니다. 또한 로그인 파트 뿐만이 아닌 다른 기능 구현에도 적극적으로 참여하여 다양한 경험을 하고 싶습니다.<br>&nbsp;마지막으로, 매일 학원 마감 시간까지 남아 함께 작업하며 고생한 팀원들에게 감사 인사를 전하고 싶습니다.|
+|신대영|&nbsp;프로젝트를 진행하며 인프라 시스템 구축을 맡게 되었습니다. 효율성과 안정성을 고려하여 시스템을 구상하며, 쿠버네티스를 활용하기로 결정했습니다. 장애 대응 및 자동화를 위해 MariaDB, Backend, Frontend, Redis를 쿠버네티스 환경으로 이관했습니다. 또한, CI/CD 프로세스를 자동화하기 위해 Jenkins를 도입했는데, 트래픽 증가로 인한 성능 저하를 방지하기 위해 Jenkins를 담당하는 별도의 서버를 구축하고 Docker 컨테이너를 사용했습니다. 그리고 이 두 서버의 자원 사용량과 트래픽 등을 모니터링하기 위해 Prometheus와 Grafana를 도입했습니다.<br>&nbsp;현재는 Backend와 Jenkins만 모니터링이 가능하지만, 추후에는 쿠버네티스의 pods 정보를 수집하여 모니터링하는 환경을 구축할 계획입니다. 또한 argro cd를 통해 docker image 변경 시 k8s 재시작과 같은 자동화도 적용해볼 계획입니다.<br>&nbsp;인프라 구축에 있어서는 효율성과 안정성이 매우 중요하다는 것을 깨달았습니다. 쿠버네티스와 같은 오케스트레이션 도구를 활용하면 시스템의 관리와 운영이 훨씬 효율적으로 이루어질 수 있음을 알았습니다. 또한, 모니터링은 시스템의 안정성을 유지하기 위해 꼭 필요한 요소라는 것을 깨달았습니다. Prometheus와 Grafana를 통해 시스템의 상태를 실시간으로 모니터링하고 대응하는 것이 중요함을 깨달았습니다.|
+|이준형|&nbsp;이번 단위 프로젝트는 개발자들을 대상으로 사용자에게 최신 IT 정보와 기술을 제공하고 사용자들 간 정보를 주고받을 수 있는 커뮤니티 서비스 개발을 진행하였다.<br>&nbsp;짧은 기간 동안 프로젝트의 빠른 진행을 위해 프론트와 백엔드 그리고 데브옵스 작업을 분업하였고, 그중 프론트를 담당하며 Vue를 사용하여 화면을 구성하였다.<br>&nbsp;화면을 구성하며 Vue를 복습해 볼 수 있어 좋았고 직접 작업해 보지 못한 데브옵스 관련 작업들은 프로젝트에 설정되어 있는 내용을 보며 복습해 봐야겠다.|
