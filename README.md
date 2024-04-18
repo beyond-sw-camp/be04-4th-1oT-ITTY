@@ -419,14 +419,14 @@ kubectl apply -f grafana/
 
 ---
 
-# 7. Jenkins
+### 7. Jenkins
 
 <aside>
 💡 Jenkins는 지속적인 통합(Continuous Integration, CI) 및 지속적인 전달(Continuous Delivery, CD)를 가능하게 하는 오픈 소스 자동화 도구. 소프트웨어 개발 및 배포 프로세스를 자동화하여 개발자 및 팀이 효율적으로 작업할 수 있는 환경을 구축하기 위해 적용함.
 
 </aside>
 
-### 7.1 Dockerfile 생성
+<b>7.1 Dockerfile 생성</b>
 
 [Dockerfile](https://github.com/mini-xi/ittyreadme/blob/d94bf1cdb581931e32a2f5d0a3b592e87f611696/yml/Dockerfile)
 
@@ -449,7 +449,7 @@ docker-compose up
 
 - 위와 같은 명령어로 jenkins 실행
 
-### 7.2 플러그인 설치
+<b>7.2 플러그인 설치</b>
 
 - 도커 컨테이너 실행이 완료 되면 추가 플러그인 설치가 필요함.
     - Dashboard → Jenkins 관리 → Plugin
@@ -457,7 +457,7 @@ docker-compose up
     - Dashboard → Jenkins 관리 → System
     - Locale → Default Language를 ko로 변경
 
-### 7.3 ssh 설정
+<b>7.3 ssh 설정</b>
 
 - Jenkins 도커 컨테이너 접속
 
@@ -492,7 +492,7 @@ cat ssh-jenkins-github--key
 cat ssh-jenkins-github--key.pub**
 ```
 
-### 7.3.1 Jenkins ssh public key 등록
+<b>7.3.1 Jenkins ssh public key 등록</b>
 
 - Dashboard → Jenkins 관리 → Security
 
@@ -509,22 +509,22 @@ security:
     - ID는 ssh key 설정할때 작성한 이름으로 작성한다. ex) ssh-jenkins-github--key
     - private key 붙여넣기
 
-### 7.4 Webhooks 설정
+<b>7.4 Webhooks 설정</b>
 
 - public key를 개발중인 Backend github repository쪽 settings → Deploy keys에 붙여넣어 키 설정.
 - ngrok을 이용하여 jenkins → {ngrok주소}:8080을 하면 jenkins를 접속할 수 있게 설정함.
     - {ngrok주소}/github-webhook/을 settings → Webhooks에 추가함.
 
-### 7.5 Jenkins CI/CD 사용
+<b>7.5 Jenkins CI/CD 사용</b>
 
-### 7.5.1. Jenkins Tools 설정
+<b>7.5.1. Jenkins Tools 설정</b>
 
 - java 설정
     - add JDK 클릭 후 Name → openJDK17, JAVA_HOME → /opt/java/openjdk 설정
 - Gradle
     - name → gradle, install automatically 체크
 
-### 7.6 Jenkins pipeline 구축
+<b>7.6 Jenkins pipeline 구축</b>
 
 - 빌드 → Docker image 생성 → Docker hub에 push
     - Docker hub관련 Credential 구축
