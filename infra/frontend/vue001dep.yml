@@ -22,7 +22,7 @@ spec: # Deployment의 사양을 정의한다. 여기에는 레플리카 수, 셀
     spec:
       containers:
       - name: vue-container # 컨테이너의 이름을 설정한다.
-        image: null00007/frontend:latest # 사용할 컨테이너 이미지를 지정한다. 여기서는 'ys0915/k8s_vue:latest'를 사용한다.
+        image: null00007/vue:latest # 사용할 컨테이너 이미지를 지정한다. 여기서는 'ys0915/k8s_vue:latest'를 사용한다.
         imagePullPolicy: Always # 이미지 풀 정책을 'Always'로 설정하여 항상 최신 이미지를 사용하도록 한다.
         ports:
         - containerPort: 5173 # 컨테이너가 리스닝할 포트 번호를 지정한다. 여기서는 5173번 포트를 사용한다.
