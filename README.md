@@ -83,21 +83,27 @@
 ## 1. ⚙️ Build Tutorial
 
 - 1.1. Build Tutorial
+
 [ITTY Wiki - 01. Build Tutorial](https://github.com/beyond-sw-camp/be04-4th-1oT-ITTY/wiki/01.-Java-Convention)
 
 - 1.2. Redis Settings
+
 [ITTY Wiki - 02. Redis Settings](https://github.com/beyond-sw-camp/be04-4th-1oT-ITTY/wiki/03.-Redis-settings)
 
 - 1.3. Database Settings
+
 [ITTY Wiki - 03. Database Settings](https://github.com/beyond-sw-camp/be04-4th-1oT-ITTY/wiki/04.-Database-Settings)
 
 - 1.4. Monitoring System ‐ Prometheus, Grafana
+
 [ITTY Wiki - 04. Monitoring System ‐ Prometheus, Grafana](https://github.com/beyond-sw-camp/be04-4th-1oT-ITTY/wiki/05.-Monitoring-System-%E2%80%90-Prometheus,-Grafana)
 
 - 1.5. Jenkins를 통한 CI‐CD
+
 [ITTY Wiki - 05. Jenkins를 통한 CI‐CD](https://github.com/beyond-sw-camp/be04-4th-1oT-ITTY/wiki/06.-Jenkins%EB%A5%BC-%ED%86%B5%ED%95%9C-CI%E2%80%90CD)
 
 - 1.6. 빌드가 제대로 되지 않았을 때
+
 [ITTY Wiki - 06. 빌드가 제대로 되지 않았을 때](https://github.com/beyond-sw-camp/be04-4th-1oT-ITTY/wiki/07.-%EB%B9%8C%EB%93%9C%EA%B0%80-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EB%90%98%EC%A7%80-%EC%95%8A%EC%95%98%EC%9D%84-%EB%95%8C)
 
 ## 2. WBS
