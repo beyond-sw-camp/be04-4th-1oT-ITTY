@@ -13,7 +13,7 @@
 </div>
 
 ###  팀원 :
- 
+
 [<img src="https://img.shields.io/badge/Github-Link-FFE482?logo=Github">](https://github.com/mini-xi) <strong>&nbsp;&nbsp;배성민</strong> <br>
 [<img src="https://img.shields.io/badge/Github-Link-FF0000?logo=Github">](https://github.com/helloItsUniverse) <strong>&nbsp;&nbsp;소우주</strong> <br>
 [<img src="https://img.shields.io/badge/Github-Link-EB99FF?logo=Github">](https://github.com/bucky1005) <strong>&nbsp;&nbsp;손세림</strong> <br>
