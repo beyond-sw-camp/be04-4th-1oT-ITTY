@@ -84,7 +84,7 @@
 
 - 1.1. Build Tutorial
 
-&nbsp&nbsp&nbsp&nbsp[ITTY Wiki - 01. Build Tutorial](https://github.com/beyond-sw-camp/be04-4th-1oT-ITTY/wiki/01.-Java-Convention)
+	[ITTY Wiki - 01. Build Tutorial](https://github.com/beyond-sw-camp/be04-4th-1oT-ITTY/wiki/01.-Java-Convention)
 
 - 1.2. Redis Settings
 
