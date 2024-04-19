@@ -93,8 +93,6 @@
 
 [ITTY Wiki - 06. 빌드가 제대로 되지 않았을 때](https://github.com/beyond-sw-camp/be04-4th-1oT-ITTY/wiki/07.-%EB%B9%8C%EB%93%9C%EA%B0%80-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EB%90%98%EC%A7%80-%EC%95%8A%EC%95%98%EC%9D%84-%EB%95%8C)
 
----
-
 ## 2. WBS
 <details>
   <summary><b>ITTY WBS</b></summary>
